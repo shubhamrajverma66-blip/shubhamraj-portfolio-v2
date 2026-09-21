@@ -1543,3 +1543,68 @@ footer a{color:var(--royal-gold-bright)!important}
     padding:0!important;
   }
 }
+
+
+/* ===== INTERNSHIP COVERS: SHOW THE COMPLETE ARTWORK ===== */
+/* The selected law photographs are portrait/variable-ratio images.
+   Keep the complete image visible instead of cropping the top/bottom. */
+.internship-photo{
+  position:relative!important;
+  overflow:hidden!important;
+  background:#11100f!important;
+  min-width:0!important;
+  min-height:0!important;
+}
+.internship-photo img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  object-fit:contain!important;
+  object-position:center center!important;
+  padding:0!important;
+  margin:0!important;
+  background:#11100f!important;
+  transform:none!important;
+}
+.internship-photo:after{
+  pointer-events:none!important;
+}
+@media(min-width:701px){
+  .internship-photo{
+    height:430px!important;
+  }
+  .internship-photo img{
+    object-fit:contain!important;
+  }
+}
+@media(max-width:700px){
+  .internship-photo,
+  .internship-row .internship-photo,
+  .internship-row.reverse .internship-photo{
+    width:calc(100% - 58px)!important;
+    height:390px!important;
+    min-height:390px!important;
+    margin-left:58px!important;
+    aspect-ratio:auto!important;
+    overflow:hidden!important;
+  }
+  .internship-photo img,
+  .internship-row .internship-photo img,
+  .internship-row.reverse .internship-photo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    padding:0!important;
+  }
+}
+@media(max-width:420px){
+  .internship-photo,
+  .internship-row .internship-photo,
+  .internship-row.reverse .internship-photo{
+    height:350px!important;
+    min-height:350px!important;
+  }
+}
