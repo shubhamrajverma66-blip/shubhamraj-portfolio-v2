@@ -1,0 +1,1 @@
+# Shubham Raj — Portfolio V2\n\nPremium black/maroon personal portfolio for Shubham Raj, B.A. LL.B. (Hons.), Faculty of Law, University of Allahabad.\n\n## Structure\n- About\n- Legal Exposure / Internships\n- MUN & Public Speaking\n- Achievements & Leadership\n- Skills\n- Contact\n\nStatic site — no build step required.
