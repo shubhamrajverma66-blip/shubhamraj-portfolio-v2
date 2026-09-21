@@ -948,3 +948,119 @@ footer a{color:var(--royal-gold-bright)!important}
   .footer-photo-image{height:470px!important;min-height:470px!important}
   .footer-photo-image img{object-fit:contain!important;padding:12px!important}
 }
+
+
+/* ===== HERO: BIGGER PORTRAIT + REVOLUTION WITHOUT SELF-ROTATION ===== */
+.hero-frame{
+  width:min(470px,62%)!important;
+  height:min(650px,86%)!important;
+  filter:none!important;
+  image-rendering:auto!important;
+  box-shadow:0 38px 110px rgba(0,0,0,.62),0 0 70px rgba(198,166,107,.08)!important;
+}
+.hero-frame img{
+  object-fit:contain!important;
+  object-position:center center!important;
+  filter:none!important;
+  opacity:1!important;
+  transform:none!important;
+  image-rendering:auto!important;
+}
+.hero-frame:after{
+  content:''!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:linear-gradient(120deg,transparent 35%,rgba(226,201,145,.07) 50%,transparent 65%)!important;
+  animation:portraitSheen 5s ease-in-out infinite!important;
+}
+@keyframes portraitSheen{
+  0%,100%{opacity:0;transform:translateX(-18%)}
+  45%{opacity:1}
+  70%{opacity:0;transform:translateX(18%)}
+}
+
+/* Cards stay perfectly upright; their POSITION revolves around the portrait. */
+.card-one,.card-two{
+  animation-duration:6.5s!important;
+  animation-timing-function:linear!important;
+  animation-iteration-count:infinite!important;
+  will-change:transform!important;
+}
+.card-one{
+  left:50%!important;
+  top:50%!important;
+  animation-name:revolveResearch!important;
+}
+.card-two{
+  right:auto!important;
+  left:50%!important;
+  top:50%!important;
+  bottom:auto!important;
+  animation-name:revolveMun!important;
+}
+@keyframes revolveResearch{
+  0%{transform:translate(-50%,-50%) translate(0,-265px)}
+  12.5%{transform:translate(-50%,-50%) translate(155px,-215px)}
+  25%{transform:translate(-50%,-50%) translate(255px,-35px)}
+  37.5%{transform:translate(-50%,-50%) translate(220px,165px)}
+  50%{transform:translate(-50%,-50%) translate(0,265px)}
+  62.5%{transform:translate(-50%,-50%) translate(-220px,165px)}
+  75%{transform:translate(-50%,-50%) translate(-255px,-35px)}
+  87.5%{transform:translate(-50%,-50%) translate(-155px,-215px)}
+  100%{transform:translate(-50%,-50%) translate(0,-265px)}
+}
+@keyframes revolveMun{
+  0%{transform:translate(-50%,-50%) translate(0,265px)}
+  12.5%{transform:translate(-50%,-50%) translate(-220px,165px)}
+  25%{transform:translate(-50%,-50%) translate(-255px,-35px)}
+  37.5%{transform:translate(-50%,-50%) translate(-155px,-215px)}
+  50%{transform:translate(-50%,-50%) translate(0,-265px)}
+  62.5%{transform:translate(-50%,-50%) translate(155px,-215px)}
+  75%{transform:translate(-50%,-50%) translate(255px,-35px)}
+  87.5%{transform:translate(-50%,-50%) translate(220px,165px)}
+  100%{transform:translate(-50%,-50%) translate(0,265px)}
+}
+.card-one:before,.card-two:before{
+  transform:none!important;
+  animation:none!important;
+}
+
+@media(max-width:900px){
+  .hero-visual{height:680px!important}
+  .hero-frame{width:370px!important;height:540px!important;max-width:82vw!important}
+  .card-one,.card-two{font-size:11px!important}
+  @keyframes revolveResearch{
+    0%{transform:translate(-50%,-50%) translate(0,-225px)}
+    25%{transform:translate(-50%,-50%) translate(215px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,225px)}
+    75%{transform:translate(-50%,-50%) translate(-215px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,-225px)}
+  }
+  @keyframes revolveMun{
+    0%{transform:translate(-50%,-50%) translate(0,225px)}
+    25%{transform:translate(-50%,-50%) translate(-215px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,-225px)}
+    75%{transform:translate(-50%,-50%) translate(215px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,225px)}
+  }
+}
+@media(max-width:560px){
+  .hero-visual{height:590px!important}
+  .hero-frame{width:315px!important;height:470px!important;max-width:86vw!important}
+  .card-one,.card-two{min-width:132px!important;padding:13px 15px!important}
+  @keyframes revolveResearch{
+    0%{transform:translate(-50%,-50%) translate(0,-185px)}
+    25%{transform:translate(-50%,-50%) translate(145px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,185px)}
+    75%{transform:translate(-50%,-50%) translate(-145px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,-185px)}
+  }
+  @keyframes revolveMun{
+    0%{transform:translate(-50%,-50%) translate(0,185px)}
+    25%{transform:translate(-50%,-50%) translate(-145px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,-185px)}
+    75%{transform:translate(-50%,-50%) translate(145px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,185px)}
+  }
+}
