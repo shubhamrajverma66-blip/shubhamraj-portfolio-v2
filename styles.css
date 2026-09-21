@@ -1488,3 +1488,58 @@ footer a{color:var(--royal-gold-bright)!important}
   .hero-copy .hero-meta span{font-size:20px!important}
   .hero-copy .hero-lede{font-size:19px!important}
 }
+
+
+/* ===== FINAL PHOTO FIT — UNIVERSITY + CLOSING PORTRAIT ===== */
+/* Fill the designed frames cleanly; no letterboxing, no artificial padding. */
+.about-photo-media{
+  padding:0!important;
+  overflow:hidden!important;
+  background:#080a0d!important;
+}
+.about-photo-media img{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  padding:0!important;
+  filter:saturate(.9) contrast(1.02)!important;
+}
+
+/* Closing portrait: use the full photo area with a natural portrait crop. */
+.footer-photo-image{
+  padding:0!important;
+  overflow:hidden!important;
+  background:#080a0d!important;
+}
+.footer-photo-image img{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  object-fit:cover!important;
+  object-position:center 35%!important;
+  padding:0!important;
+  filter:saturate(.88) contrast(1.04)!important;
+}
+
+@media(max-width:700px){
+  .about-photo-media{
+    height:360px!important;
+    padding:0!important;
+  }
+  .about-photo-media img{
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+  .footer-photo-image{
+    height:470px!important;
+    min-height:470px!important;
+    padding:0!important;
+  }
+  .footer-photo-image img{
+    object-fit:cover!important;
+    object-position:center 32%!important;
+    padding:0!important;
+  }
+}
