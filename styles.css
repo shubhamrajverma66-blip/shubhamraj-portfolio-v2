@@ -1639,3 +1639,54 @@ nav a:hover,.text-link:hover{color:var(--gold-bright)!important}
 .section-head h2:after,.mun-intro h2:after,.skills-title h2:after,.contact h2:after,.internship-content h3:after,.mun-panel h3:after{content:"";position:absolute;left:0;bottom:0;width:72px;height:2px;background:linear-gradient(90deg,var(--gold-bright),rgba(201,164,91,.08));box-shadow:0 0 12px rgba(201,164,91,.22)}
 .internship-photo{background:#071426!important;border-color:rgba(201,164,91,.22)!important}.internship-photo img{background:#071426!important}
 @media(max-width:800px){.contact-methods{grid-template-columns:1fr}.contact-method{min-height:92px}}
+
+/* ===== ROYAL LEGAL EDITORIAL THEME ===== */
+:root{
+  --ink:#08090d;
+  --navy:#101827;
+  --navy2:#16243a;
+  --gold:#c8a45d;
+  --gold-light:#f0d99a;
+  --cream:#f5efe4;
+  --muted:#aaa7a1;
+  --wine:#6f2337;
+}
+body{background:var(--ink)!important;color:var(--cream)!important}
+.hero{background:radial-gradient(circle at 78% 40%,rgba(200,164,93,.13),transparent 28%),linear-gradient(120deg,#08090d 0%,#101827 58%,#08090d 100%)!important}
+.section-dark{background:linear-gradient(145deg,#0b0d13,#111c2c 55%,#0a0b10)!important}
+.nav{background:rgba(8,9,13,.88)!important;border-bottom-color:rgba(200,164,93,.24)!important}
+.brand i,.pulse{background:var(--gold)!important;box-shadow:0 0 18px rgba(200,164,93,.7)!important}
+.hero h1 em,.section-head em,.mun-intro em,.skills-title em,.contact h2 em{color:var(--gold-light)!important}
+.btn.primary{background:linear-gradient(135deg,var(--gold-light),var(--gold))!important;color:#111!important}
+.text-link:hover,nav a:hover{color:var(--gold-light)!important}
+.section-kicker,.eyebrow{color:#c5a96c!important}
+.section-head h2,.mun-intro h2,.skills-title h2,.contact h2{position:relative;display:inline-block}
+.section-head h2:after,.mun-intro h2:after,.skills-title h2:after,.contact h2:after{
+ content:"";display:block;width:74px;height:2px;margin-top:18px;
+ background:linear-gradient(90deg,var(--gold),transparent);
+ box-shadow:0 0 10px rgba(200,164,93,.28);
+}
+.internship-content h3,.lead-item b,.skill-feature h3,.skill-cluster h4,.about-title .serif{color:var(--cream)!important}
+.internship-content h3:after,.lead-item b:after,.skill-feature h3:after,.skill-cluster h4:after{
+ content:"";display:block;width:48px;height:2px;margin-top:9px;background:var(--gold);
+}
+.internship-photo,.about-photo-media,.footer-photo-image{border-color:rgba(200,164,93,.28)!important}
+.floating-card{border-color:rgba(200,164,93,.35)!important;background:rgba(10,14,22,.92)!important}
+.floating-card small{color:var(--gold)!important}
+.hero-frame{border-color:rgba(200,164,93,.35)!important}
+.contact-methods{display:grid;gap:14px;margin:28px 0 18px;max-width:720px}
+.contact-method{
+ display:grid;grid-template-columns:48px 1fr 28px;align-items:center;gap:15px;
+ padding:16px 18px;text-decoration:none;color:var(--cream);
+ border:1px solid rgba(200,164,93,.25);background:linear-gradient(105deg,rgba(22,36,58,.72),rgba(12,15,22,.8));
+ transition:.25s ease;position:relative;overflow:hidden;
+}
+.contact-method:hover{transform:translateX(5px);border-color:rgba(240,217,154,.65);box-shadow:0 12px 35px rgba(0,0,0,.3)}
+.contact-method small{font:9px 'DM Mono';letter-spacing:.16em;color:var(--gold);grid-column:2;grid-row:1}
+.contact-method span{font:17px 'DM Sans',Arial,sans-serif;grid-column:2;grid-row:2}
+.contact-method b{grid-column:3;grid-row:1/3;color:var(--gold-light);font-size:20px}
+.contact-icon{grid-column:1;grid-row:1/3;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(200,164,93,.45);background:#0a101b;color:var(--gold-light);font:16px Georgia,serif}
+.phone-placeholder{color:#817f7b!important;font-size:15px!important}
+.contact-meta a{color:var(--gold-light)!important}
+.mun-panel,.skill-feature,.lead-item{border-color:rgba(200,164,93,.22)!important}
+.tags span,.mun-list span{border-color:rgba(200,164,93,.22)!important}
