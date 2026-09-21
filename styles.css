@@ -1608,3 +1608,34 @@ footer a{color:var(--royal-gold-bright)!important}
     min-height:350px!important;
   }
 }
+
+
+/* ===== ROYAL ELITE TWO-TONE SYSTEM: MIDNIGHT NAVY + ANTIQUE GOLD ===== */
+:root{--royal:#071426;--royal-2:#0d1d34;--gold:#c9a45b;--gold-bright:#efd48a;--paper:#f4efe5;--muted:#b8b0a5}
+body{background:var(--royal)!important;color:var(--paper)!important}
+.nav{background:rgba(7,20,38,.92)!important;border-bottom-color:rgba(201,164,91,.22)!important}
+.brand i,.pulse{background:var(--gold)!important;box-shadow:0 0 18px rgba(201,164,91,.65)!important}
+nav a:hover,.text-link:hover{color:var(--gold-bright)!important}
+.nav-cta{border-color:rgba(201,164,91,.35)!important}.nav-cta span{color:var(--gold-bright)!important}
+.hero{background:radial-gradient(circle at 80% 45%,rgba(201,164,91,.12),transparent 34%),var(--royal)!important}
+.section-dark{background:linear-gradient(180deg,#0d1d34,#071426)!important}
+.hero h1 em,.section-head em,.mun-intro em,.skills-title em,.contact h2 em{color:var(--gold-bright)!important}
+.hero-meta strong{color:#e7d09a!important}.eyebrow,.section-kicker{color:#c8b27d!important}
+.btn.primary{background:var(--gold-bright)!important;color:#071426!important}
+.floating-card{background:rgba(7,20,38,.94)!important;border-color:rgba(201,164,91,.35)!important;box-shadow:0 18px 50px rgba(0,0,0,.28)!important}
+.floating-card small{color:#c8b27d!important}.section-pad{border-color:rgba(201,164,91,.14)!important}
+.experience-quote,.section-quote,.leadership-quote,.quote{border-left-color:var(--gold)!important}
+.tags span,.mun-list span{border-color:rgba(201,164,91,.3)!important;color:#d7c18d!important}
+.skill-line{background:var(--gold)!important}.skill-feature,.skill-feature.dark{border-color:rgba(201,164,91,.2)!important}
+.marquee{border-top-color:rgba(201,164,91,.2)!important;border-bottom-color:rgba(201,164,91,.2)!important}
+.contact-methods{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:30px 0 18px}
+.contact-method{min-height:105px;display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;align-items:end;padding:18px 19px;text-decoration:none;color:var(--paper);background:linear-gradient(145deg,rgba(13,29,52,.96),rgba(7,20,38,.96));border:1px solid rgba(201,164,91,.28);transition:transform .25s,border-color .25s,box-shadow .25s}
+.contact-method:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.28)}
+.contact-method small{grid-column:1/-1;font:9px 'DM Mono';letter-spacing:.16em;color:var(--gold)!important;margin-bottom:14px}
+.contact-method span{font:600 16px 'DM Sans',Arial,sans-serif;word-break:break-word}.contact-method b{color:var(--gold-bright);font-size:20px}.phone-placeholder{color:#d6d0c7!important}
+.contact-meta a{color:var(--gold-bright)!important}
+/* Important headlines get a deliberate editorial gold underline. */
+.section-head h2,.mun-intro h2,.skills-title h2,.contact h2,.internship-content h3,.mun-panel h3{position:relative;display:inline-block;padding-bottom:13px}
+.section-head h2:after,.mun-intro h2:after,.skills-title h2:after,.contact h2:after,.internship-content h3:after,.mun-panel h3:after{content:"";position:absolute;left:0;bottom:0;width:72px;height:2px;background:linear-gradient(90deg,var(--gold-bright),rgba(201,164,91,.08));box-shadow:0 0 12px rgba(201,164,91,.22)}
+.internship-photo{background:#071426!important;border-color:rgba(201,164,91,.22)!important}.internship-photo img{background:#071426!important}
+@media(max-width:800px){.contact-methods{grid-template-columns:1fr}.contact-method{min-height:92px}}
