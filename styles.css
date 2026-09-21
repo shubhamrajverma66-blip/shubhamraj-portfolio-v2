@@ -1301,3 +1301,53 @@ footer a{color:var(--royal-gold-bright)!important}
   .hero-visual{height:650px!important;min-height:650px!important}
   .hero-frame{width:420px!important;height:590px!important;max-width:92vw!important}
 }
+
+
+/* ===== FINAL FLOATING CARD REVOLUTION — CLEAN + SLOW ===== */
+.floating-card.card-one,
+.floating-card.card-two{
+  will-change:transform!important;
+  transform-origin:center center!important;
+  animation-duration:30s!important;
+  animation-timing-function:linear!important;
+  animation-iteration-count:infinite!important;
+}
+
+/* Remove the circular orbit/ring around the labels completely. */
+.floating-card.card-one:before,
+.floating-card.card-two:before,
+.floating-card.card-one:after,
+.floating-card.card-two:after{
+  display:none!important;
+  content:none!important;
+  width:0!important;
+  height:0!important;
+  border:0!important;
+  box-shadow:none!important;
+  animation:none!important;
+}
+
+/* Keep the labels themselves upright while their position revolves slowly. */
+.floating-card.card-one small,
+.floating-card.card-two small{
+  animation:none!important;
+}
+
+@media(min-width:1101px){
+  .floating-card.card-one{
+    left:50%!important;
+    top:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    animation-name:revolveResearch!important;
+    animation-duration:30s!important;
+  }
+  .floating-card.card-two{
+    left:50%!important;
+    top:50%!important;
+    right:auto!important;
+    bottom:auto!important;
+    animation-name:revolveMun!important;
+    animation-duration:30s!important;
+  }
+}
