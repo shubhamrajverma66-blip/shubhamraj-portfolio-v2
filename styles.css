@@ -1114,3 +1114,94 @@ footer a{color:var(--royal-gold-bright)!important}
   .hero-copy .hero-sub,.hero-copy .subtitle,.hero-copy .hero-meta{font-size:15px!important;line-height:1.5!important}
   .hero-copy p{font-size:14px!important;line-height:1.65!important}
 }
+
+
+/* ===== HERO DEFINITIVE OVERRIDE ===== */
+.hero.section-pad{
+  grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr)!important;
+  gap:2vw!important;
+}
+.hero-copy{
+  max-width:760px!important;
+}
+.hero-copy h1{
+  font-family:'Bodoni Moda',Georgia,serif!important;
+  font-size:clamp(100px,11vw,178px)!important;
+  line-height:.78!important;
+  letter-spacing:-.07em!important;
+  margin:28px 0 34px!important;
+}
+.hero-copy .hero-meta{
+  display:flex!important;
+  align-items:center!important;
+  gap:22px!important;
+  font-size:20px!important;
+  line-height:1.45!important;
+}
+.hero-copy .hero-meta strong{
+  font-size:16px!important;
+  letter-spacing:.08em!important;
+}
+.hero-copy .hero-meta span{
+  font-size:17px!important;
+}
+.hero-copy .hero-lede{
+  max-width:650px!important;
+  font-size:19px!important;
+  line-height:1.8!important;
+  margin:30px 0!important;
+}
+.hero-visual{
+  height:790px!important;
+  min-height:790px!important;
+}
+.hero-frame{
+  width:600px!important;
+  height:750px!important;
+  max-width:none!important;
+  max-height:none!important;
+}
+.hero-frame img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  padding:0!important;
+}
+@media(max-width:1100px){
+  .hero-frame{width:500px!important;height:670px!important}
+  .hero-visual{height:720px!important;min-height:720px!important}
+  .hero-copy h1{font-size:clamp(82px,10vw,135px)!important}
+}
+@media(max-width:900px){
+  .hero.section-pad{
+    grid-template-columns:1fr!important;
+  }
+  .hero-copy h1{font-size:clamp(76px,14vw,120px)!important}
+  .hero-copy .hero-meta{font-size:18px!important}
+  .hero-copy .hero-meta strong{font-size:15px!important}
+  .hero-copy .hero-meta span{font-size:16px!important}
+  .hero-copy .hero-lede{font-size:17px!important}
+  .hero-visual{height:700px!important;min-height:700px!important}
+  .hero-frame{width:500px!important;height:650px!important;max-width:82vw!important}
+}
+@media(max-width:560px){
+  .hero-copy h1{
+    font-size:64px!important;
+    line-height:.84!important;
+    margin:22px 0 28px!important;
+  }
+  .hero-copy .hero-meta{
+    display:block!important;
+    font-size:16px!important;
+    line-height:1.5!important;
+  }
+  .hero-copy .hero-meta strong,
+  .hero-copy .hero-meta span{
+    display:block!important;
+    font-size:15px!important;
+  }
+  .hero-copy .hero-meta span{margin-top:4px!important}
+  .hero-copy .hero-lede{font-size:15px!important;line-height:1.7!important}
+  .hero-visual{height:610px!important;min-height:610px!important}
+  .hero-frame{width:370px!important;height:540px!important;max-width:88vw!important}
+}
