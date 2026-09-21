@@ -4,7 +4,7 @@ const glow=document.querySelector('.cursor-glow');window.addEventListener('point
 const internshipCovers=[
   ['assets/internship-cover-01.jpg','Shubham Raj — Scales of Justice'],
   ['assets/internship-cover-02.jpg','Shubham Raj — Evidence and Gavel'],
-  ['https://upload.wikimedia.org/wikipedia/commons/c/c5/Statua_Iustitiae.jpg','Lady Justice statue — Wikimedia Commons'],
+  ['assets/lady-justice.svg','Lady Justice — law, balance and principle'],
   ['assets/internship-cover-04.jpg','Supreme Court architecture — original artwork']
 ];
 document.querySelectorAll('.internship-photo img').forEach((img,i)=>{
