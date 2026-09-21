@@ -1205,3 +1205,99 @@ footer a{color:var(--royal-gold-bright)!important}
   .hero-visual{height:610px!important;min-height:610px!important}
   .hero-frame{width:370px!important;height:540px!important;max-width:88vw!important}
 }
+
+
+/* ===== HERO FINAL SCALE + CALM REVOLUTION ===== */
+.hero-copy h1{
+  font-size:clamp(125px,14vw,215px)!important;
+  line-height:.74!important;
+  margin:34px 0 42px!important;
+}
+.hero-copy .hero-meta{
+  font-size:23px!important;
+  line-height:1.55!important;
+}
+.hero-copy .hero-meta strong{font-size:19px!important}
+.hero-copy .hero-meta span{font-size:20px!important}
+.hero-copy .hero-lede{
+  font-size:21px!important;
+  line-height:1.82!important;
+  max-width:700px!important;
+}
+.hero-visual{
+  height:850px!important;
+  min-height:850px!important;
+}
+.hero-frame{
+  width:680px!important;
+  height:810px!important;
+  max-width:none!important;
+}
+.hero-frame img{
+  width:100%!important;height:100%!important;
+  object-fit:contain!important;
+}
+
+/* Revolution = slow orbital movement; boxes themselves NEVER rotate. */
+.card-one,.card-two{
+  animation-duration:18s!important;
+  animation-timing-function:linear!important;
+  animation-iteration-count:infinite!important;
+}
+.card-one:before,.card-two:before{
+  display:none!important;
+  content:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  animation:none!important;
+}
+
+/* Keep the cards visually clean: no circular pseudo-element around them. */
+.card-one,.card-two{
+  border-radius:3px!important;
+}
+
+/* Desktop orbital radius */
+@media(min-width:1101px){
+  @keyframes revolveResearch{
+    0%{transform:translate(-50%,-50%) translate(0,-285px)}
+    25%{transform:translate(-50%,-50%) translate(285px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,285px)}
+    75%{transform:translate(-50%,-50%) translate(-285px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,-285px)}
+  }
+  @keyframes revolveMun{
+    0%{transform:translate(-50%,-50%) translate(0,285px)}
+    25%{transform:translate(-50%,-50%) translate(-285px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,-285px)}
+    75%{transform:translate(-50%,-50%) translate(285px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,285px)}
+  }
+}
+@media(max-width:1100px){
+  .hero-copy h1{font-size:clamp(100px,13vw,165px)!important}
+  .hero-visual{height:760px!important;min-height:760px!important}
+  .hero-frame{width:570px!important;height:700px!important}
+}
+@media(max-width:900px){
+  .hero-copy h1{font-size:clamp(86px,15vw,135px)!important}
+  .hero-copy .hero-meta{font-size:20px!important}
+  .hero-copy .hero-meta strong{font-size:17px!important}
+  .hero-copy .hero-meta span{font-size:18px!important}
+  .hero-copy .hero-lede{font-size:18px!important}
+  .hero-visual{height:720px!important;min-height:720px!important}
+  .hero-frame{width:540px!important;height:680px!important;max-width:88vw!important}
+}
+@media(max-width:560px){
+  .hero-copy h1{
+    font-size:76px!important;
+    line-height:.8!important;
+    margin:24px 0 32px!important;
+  }
+  .hero-copy .hero-meta{font-size:18px!important}
+  .hero-copy .hero-meta strong{font-size:16px!important}
+  .hero-copy .hero-meta span{font-size:17px!important}
+  .hero-copy .hero-lede{font-size:16px!important;line-height:1.75!important}
+  .hero-visual{height:650px!important;min-height:650px!important}
+  .hero-frame{width:420px!important;height:590px!important;max-width:92vw!important}
+}
