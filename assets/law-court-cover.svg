@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#090607"/><stop offset=".55" stop-color="#261016"/><stop offset="1" stop-color="#080607"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#a83b57" stop-opacity=".35"/><stop offset="1" stop-color="#a83b57" stop-opacity="0"/></radialGradient>
+<linearGradient id="stone" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e8d8cf"/><stop offset="1" stop-color="#8f7470"/></linearGradient></defs>
+<rect width="1200" height="700" fill="url(#bg)"/><circle cx="850" cy="280" r="380" fill="url(#glow)"/>
+<g opacity=".95" fill="url(#stone)" stroke="#f2e6df" stroke-opacity=".22"><path d="M170 420L1030 420L950 350L250 350Z"/><path d="M230 350L970 350L900 295L300 295Z"/><path d="M300 295L900 295L820 245L380 245Z"/><path d="M380 245L820 245L600 130Z"/><g fill="#b99e95"><path d="M300 350h55v70h-55z"/><path d="M410 350h55v70h-55z"/><path d="M520 350h55v70h-55z"/><path d="M630 350h55v70h-55z"/><path d="M740 350h55v70h-55z"/><path d="M850 350h55v70h-55z"/></g></g>
+<g transform="translate(940 105)" stroke="#e9d9d3" stroke-width="8" fill="none" stroke-linecap="round"><path d="M0 0v310"/><path d="M-115 90h230"/><path d="M-105 92L-155 220h100z"/><path d="M105 92L55 220h100z"/><path d="M-175 220h115"/><path d="M45 220h115"/><path d="M-20 0h40"/></g>
+<text x="70" y="105" fill="#b94c68" font-family="monospace" font-size="18" letter-spacing="6">LAW · RESEARCH · LITIGATION</text>
+<text x="70" y="620" fill="#f1e8df" font-family="Georgia,serif" font-size="58">Courts &amp; Legal Practice</text>
+<text x="73" y="660" fill="#a98c92" font-family="monospace" font-size="15" letter-spacing="4">DELHI · HIGH COURT · DISTRICT COURTS</text></svg>
