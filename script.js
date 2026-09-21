@@ -4,7 +4,7 @@ const glow=document.querySelector('.cursor-glow');window.addEventListener('point
 const internshipCovers=[
   ['assets/internship-cover-01.jpg','Shubham Raj — Scales of Justice'],
   ['assets/internship-cover-02.jpg','Shubham Raj — Evidence and Gavel'],
-  ['https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Justice_at_Stadhuis_Haarlem.jpg/1744px-Justice_at_Stadhuis_Haarlem.jpg','Lady Justice — law, balance and principle'],
+  ['https://i0.pickpik.com/photos/666/246/477/justice-statue-lady-justice-greek-mythology-43c4c84053cbb16e1184d1939ab58d45.jpg','Lady Justice — law, balance and principle'],
   ['assets/internship-cover-04.jpg','Supreme Court architecture — original artwork']
 ];
 document.querySelectorAll('.internship-photo img').forEach((img,i)=>{
