@@ -1351,3 +1351,70 @@ footer a{color:var(--royal-gold-bright)!important}
     animation-duration:30s!important;
   }
 }
+
+
+/* ===== FINAL HERO CARD SPACING + SCALE ===== */
+@media(min-width:1101px){
+  .floating-card.card-one{
+    animation-duration:55s!important;
+  }
+  .floating-card.card-two{
+    animation-duration:55s!important;
+  }
+
+  /* Keep both cards on a wider orbit so they stay clear of the portrait. */
+  @keyframes revolveResearch{
+    0%{transform:translate(-50%,-50%) translate(0,-390px)}
+    25%{transform:translate(-50%,-50%) translate(390px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,390px)}
+    75%{transform:translate(-50%,-50%) translate(-390px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,-390px)}
+  }
+  @keyframes revolveMun{
+    0%{transform:translate(-50%,-50%) translate(0,390px)}
+    25%{transform:translate(-50%,-50%) translate(-390px,0)}
+    50%{transform:translate(-50%,-50%) translate(0,-390px)}
+    75%{transform:translate(-50%,-50%) translate(390px,0)}
+    100%{transform:translate(-50%,-50%) translate(0,390px)}
+  }
+
+  /* Cards sit behind the photo layer; never cover the portrait. */
+  .hero-frame{
+    position:relative!important;
+    z-index:10!important;
+  }
+  .floating-card{
+    z-index:3!important;
+  }
+}
+
+.hero-copy .hero-meta{
+  font-size:27px!important;
+  line-height:1.65!important;
+}
+.hero-copy .hero-meta strong{
+  font-size:23px!important;
+}
+.hero-copy .hero-meta span{
+  font-size:24px!important;
+}
+.hero-copy .hero-lede{
+  font-size:24px!important;
+  line-height:1.85!important;
+  max-width:760px!important;
+}
+.hero-copy .hero-signal{
+  font-size:18px!important;
+}
+@media(max-width:900px){
+  .hero-copy .hero-meta{font-size:22px!important}
+  .hero-copy .hero-meta strong{font-size:19px!important}
+  .hero-copy .hero-meta span{font-size:20px!important}
+  .hero-copy .hero-lede{font-size:19px!important}
+}
+@media(max-width:560px){
+  .hero-copy .hero-meta{font-size:19px!important}
+  .hero-copy .hero-meta strong{font-size:17px!important}
+  .hero-copy .hero-meta span{font-size:18px!important}
+  .hero-copy .hero-lede{font-size:17px!important}
+}
