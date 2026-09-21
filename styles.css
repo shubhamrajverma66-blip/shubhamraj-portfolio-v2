@@ -292,3 +292,194 @@ nav a,.nav-cta,.text-link,.brand,.section-kicker,.eyebrow,.mono,.tags span,.exp-
 @media(prefers-reduced-motion:reduce){
   .profile-energy *,.marquee div,.floating-card{animation:none!important}
 }
+
+
+/* ===== FINAL PREMIUM LEGAL EDITORIAL SYSTEM ===== */
+:root{
+  --ink:#0a0b0d;
+  --ink-2:#111318;
+  --ink-3:#171a20;
+  --ivory:#e9e1d3;
+  --ivory-2:#cfc4b2;
+  --muted:#958d82;
+  --gold:#b59663;
+  --gold-light:#d2b985;
+  --wine:#5a2730;
+  --line:rgba(233,225,211,.13);
+  --line-dark:rgba(10,11,13,.16);
+}
+html{background:var(--ink);scroll-behavior:smooth}
+body{background:var(--ink);color:var(--ivory);font-family:'DM Sans',Arial,sans-serif}
+.noise{opacity:.025}
+.cursor-glow{width:330px;height:330px;background:radial-gradient(circle,rgba(181,150,99,.08),transparent 68%);z-index:1}
+.nav{height:82px;background:rgba(10,11,13,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(22px)}
+.brand{color:var(--ivory)}
+.brand i{background:var(--gold);box-shadow:0 0 18px rgba(181,150,99,.4)}
+nav a,.nav-cta,.text-link{color:#a9a094}
+nav a:hover,.text-link:hover{color:var(--gold-light)}
+.nav-cta{border-color:var(--line);color:var(--ivory)}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+.section-pad{padding:135px 6vw}
+.hero{min-height:100vh;background:
+  radial-gradient(circle at 75% 42%,rgba(181,150,99,.075),transparent 23%),
+  radial-gradient(circle at 20% 80%,rgba(90,39,48,.16),transparent 30%),
+  linear-gradient(115deg,#090a0c,#0e1014 58%,#0a0b0d)}
+.eyebrow,.section-kicker{color:var(--gold);font-family:'IBM Plex Mono'}
+.pulse{background:var(--gold);box-shadow:0 0 0 0 rgba(181,150,99,.35)}
+.hero h1{font-family:'Bodoni Moda',Georgia,serif;color:var(--ivory);font-size:clamp(92px,10.5vw,170px);line-height:.77;letter-spacing:-.07em}
+.hero h1 em,.section-head em,.mun-intro em,.skills-title em,.contact h2 em{color:var(--gold-light)}
+.hero-meta strong{font-family:'IBM Plex Mono';color:var(--ivory)}
+.hero-meta span,.hero-lede{color:#9d968c}
+.hero-lede{font-size:17px;line-height:1.9}
+.btn.primary{background:var(--gold);color:var(--ink);border-color:var(--gold);font-weight:600}
+.btn.primary:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.hero-quote{border:0!important;color:#c4b9aa;font-family:'Bodoni Moda',Georgia,serif;font-size:23px}
+.hero-quote:before{color:var(--gold)}
+.hero-quote:after{background:var(--gold)}
+.hero-frame{width:min(520px,70%);height:590px;background:#08090b;border:1px solid rgba(210,185,133,.3);box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(181,150,99,.04)}
+.hero-frame:before{border-color:rgba(210,185,133,.22)}
+.hero-frame img{object-fit:contain!important;object-position:center!important;background:#0b0c0e;padding:18px;filter:none!important}
+.floating-card{background:rgba(14,16,20,.88);border-color:rgba(210,185,133,.2);color:var(--ivory);box-shadow:0 22px 55px rgba(0,0,0,.35)}
+.floating-card small{color:var(--gold)}
+.floating-card b{font-family:'Bodoni Moda',Georgia,serif}
+.vertical-label,.hero-bottom{color:#766f66}
+.hero-bottom .line{background:var(--line)}
+
+/* Completely remove all orbital/energy animation. */
+.orbit,.profile-energy{display:none!important}
+.hero-visual:before{content:'';position:absolute;inset:7%;border:1px solid rgba(181,150,99,.08);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation:diamondPulse 5s ease-in-out infinite;pointer-events:none}
+.hero-visual:after{content:'LAW  ·  2026';position:absolute;top:7%;right:7%;font:8px 'IBM Plex Mono';letter-spacing:.22em;color:rgba(181,150,99,.55);writing-mode:vertical-rl;animation:quietFloat 5s ease-in-out infinite}
+@keyframes diamondPulse{0%,100%{transform:scale(.94) rotate(0deg);opacity:.25}50%{transform:scale(1.03) rotate(2deg);opacity:.65}}
+@keyframes quietFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+
+/* Sections */
+.section-dark{background:#0d0f12}
+.about,.experience,.leadership,.skills{background:#0d0f12;color:var(--ivory);border-color:var(--line)}
+.about-grid{max-width:1250px}
+.serif{font-family:'Bodoni Moda',Georgia,serif;color:var(--ivory)}
+.serif i{color:var(--gold-light)}
+.big-copy{font-family:'Bodoni Moda',Georgia,serif;color:var(--ivory);font-size:28px;line-height:1.35}
+.about-copy p:not(.big-copy),.section-head>p,.mun-intro p,.contact-copy>p{color:#9f988e}
+.quote{color:var(--gold-light);border-color:var(--line)}
+.about-photo{max-width:1250px;background:#12151a;border-color:var(--line);box-shadow:0 25px 70px rgba(0,0,0,.22)}
+.about-photo b{font-family:'Bodoni Moda',Georgia,serif;color:var(--ivory)}
+.about-photo span{color:#938b80}
+.photo-index{background:#111318;color:var(--gold-light);border:1px solid rgba(181,150,99,.25)}
+
+/* Internship section: four editorial timeline entries, not boxes. */
+.experience{background:#e9e1d3;color:#17191c}
+.experience .section-kicker{color:#76593a}
+.experience .section-head h2{color:#14171a}
+.experience .section-head>p{color:#5d5a54}
+.experience-quote{border-color:rgba(90,39,48,.3);background:rgba(255,255,255,.18)}
+.experience-quote p{color:#292724;font-family:'Bodoni Moda',Georgia,serif}
+.internship-rail{max-width:1250px;margin:30px auto 0;position:relative}
+.internship-rail:before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(90,39,48,.22)}
+.internship-row{position:relative;display:grid;grid-template-columns:70px minmax(320px,1fr) minmax(340px,1fr);gap:38px;align-items:stretch;margin:0 0 36px;padding:0 0 36px;border-bottom:1px solid rgba(90,39,48,.16)}
+.internship-row.reverse{grid-template-columns:70px minmax(340px,1fr) minmax(320px,1fr)}
+.internship-row.reverse .internship-photo{grid-column:3;grid-row:1}
+.internship-row.reverse .internship-content{grid-column:2;grid-row:1}
+.internship-index{display:flex;flex-direction:column;align-items:center;position:relative;z-index:3}
+.internship-index span{width:42px;height:42px;border:1px solid rgba(90,39,48,.35);border-radius:50%;display:grid;place-items:center;background:#e9e1d3;color:#6f493f;font:10px 'IBM Plex Mono'}
+.internship-index i{width:1px;flex:1;background:rgba(90,39,48,.18);margin-top:12px}
+.internship-photo{min-height:300px;position:relative;overflow:hidden;background:#17191c;border:1px solid rgba(90,39,48,.2)}
+.internship-photo img{width:100%;height:100%;min-height:300px;object-fit:cover;display:block;filter:sepia(.12) saturate(.72) contrast(1.06);transition:transform .7s ease}
+.internship-photo:after{content:'';position:absolute;inset:14px;border:1px solid rgba(233,225,211,.3);pointer-events:none}
+.internship-photo span{position:absolute;left:18px;bottom:18px;z-index:2;padding:8px 10px;background:rgba(13,15,18,.88);color:var(--gold-light);font:8px 'IBM Plex Mono';letter-spacing:.12em}
+.internship-row:hover .internship-photo img{transform:scale(1.045)}
+.internship-content{padding:18px 15px 10px 5px;align-self:center}
+.internship-content .mono{color:#76593a}
+.internship-content h3{font:600 clamp(34px,3.2vw,50px)/1 'Bodoni Moda',Georgia,serif;color:#17191c;margin:18px 0}
+.internship-content>p:not(.mono){color:#5d5a54;font-size:15px;line-height:1.85;max-width:620px}
+.internship-content .tags{margin:25px 0}
+.internship-content .tags span{background:transparent;border-color:rgba(90,39,48,.2);color:#6c635a}
+.internship-content>a{color:#6d3a3d;font:9px 'IBM Plex Mono';letter-spacing:.08em;text-decoration:none}
+.internship-content>a:hover{color:#9a684a}
+
+/* Achievement image */
+.trophy{min-height:520px;background:#111318;border:1px solid rgba(181,150,99,.22);position:relative;overflow:hidden}
+.trophy img{object-fit:cover;filter:sepia(.18) saturate(.7) contrast(1.08);opacity:.72}
+.trophy:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,13,.02) 25%,rgba(10,11,13,.92) 100%)}
+.trophy-caption{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:42px}
+.trophy-caption span{font:8px 'IBM Plex Mono';letter-spacing:.18em;color:var(--gold-light)}
+.trophy-caption b{display:block;margin-top:14px;color:var(--ivory);font:500 36px/1.08 'Bodoni Moda',Georgia,serif}
+.trophy-caption small{display:block;margin-top:10px;color:#aaa093;font:11px 'IBM Plex Mono'}
+
+/* Skills bento instead of 10 repetitive boxes */
+.skills-title h2{color:var(--ivory)}
+.skills-bento{max-width:1250px;margin:45px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(233,225,211,.12);border:1px solid rgba(233,225,211,.12)}
+.skill-feature{min-height:340px;padding:42px;background:#13161a;position:relative;overflow:hidden}
+.skill-feature:after{content:'';position:absolute;width:180px;height:180px;border:1px solid rgba(181,150,99,.12);border-radius:50%;right:-55px;bottom:-55px}
+.skill-feature.dark{background:#171219}
+.skill-feature>span,.skill-cluster span{font:8px 'IBM Plex Mono';letter-spacing:.15em;color:var(--gold)}
+.skill-feature h3{font:500 clamp(34px,4vw,58px)/.95 'Bodoni Moda',Georgia,serif;color:var(--ivory);margin:42px 0 20px}
+.skill-feature h3 em{color:var(--gold-light);font-style:italic}
+.skill-feature p{max-width:520px;color:#9f988e;font-size:14px;line-height:1.8}
+.skill-feature>b{font:8px 'IBM Plex Mono';letter-spacing:.16em;color:#706b64}
+.skill-line{height:1px;width:100%;background:var(--line);margin:30px 0 17px}
+.skill-cluster{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);background:#101216}
+.skill-cluster article{min-height:190px;padding:28px;border-right:1px solid var(--line);border-top:1px solid var(--line);transition:background .3s,transform .3s}
+.skill-cluster article:hover{background:#191c21;transform:translateY(-3px)}
+.skill-cluster h4{font:500 23px/1.05 'Bodoni Moda',Georgia,serif;color:var(--ivory);margin:18px 0 10px}
+.skill-cluster p{font-size:12px;line-height:1.7;color:#8f8a82;margin:0}
+
+/* MUN */
+.mun{background:#080a0d;color:var(--ivory)}
+.mun-intro h2,.mun-panel h3{color:var(--ivory)}
+.mun-panel{background:#111419;border-color:var(--line)}
+.mun-panel.accent{background:#171219;border-color:rgba(181,150,99,.2)}
+.mun-list>*,.lead-item{border-color:var(--line)}
+.mun-list span{color:#a59d92}
+.mun-panel h3{font-family:'Bodoni Moda',Georgia,serif}
+.marquee{border-color:var(--line);color:#776f65}
+
+/* Final portrait: side-by-side, full image, no crop */
+.contact{background:#0b0d10;color:var(--ivory);border-top:1px solid var(--line)}
+.contact h2,.contact h2 em{color:var(--ivory)}
+.contact h2 em{color:var(--gold-light)}
+.contact-copy>p{color:#aaa196}
+.email{color:var(--ivory);border-color:rgba(233,225,211,.25)}
+.email span,.contact-meta a{color:var(--gold-light)}
+.contact-meta{color:#8e877d}
+.footer-photo{height:520px;max-width:1250px;margin:70px auto 0;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(300px,.72fr);background:#14171b;border:1px solid rgba(181,150,99,.2);overflow:hidden}
+.footer-photo-image{min-height:520px;background:#090a0c;display:grid;place-items:center;overflow:hidden;border-right:1px solid rgba(233,225,211,.1)}
+.footer-photo-image img{width:100%;height:100%;object-fit:contain!important;object-position:center!important;padding:18px;filter:none!important}
+.footer-photo-copy{padding:58px 50px;display:flex;flex-direction:column;justify-content:flex-end;gap:18px;background:linear-gradient(145deg,#15181d,#0c0e11)}
+.photo-kicker{font:8px 'IBM Plex Mono';letter-spacing:.2em;color:var(--gold)}
+.footer-photo-copy strong{font:500 clamp(38px,4vw,62px)/.92 'Bodoni Moda',Georgia,serif;color:var(--ivory)}
+.footer-photo-copy strong em{color:var(--gold-light)}
+.photo-note{max-width:260px;color:#8f897f;font-size:12px;line-height:1.7}
+footer{background:#060708;color:#706a62;border-color:var(--line)}
+footer a{color:var(--gold-light)}
+
+@media(max-width:1000px){
+  .internship-row,.internship-row.reverse{grid-template-columns:58px 1fr}
+  .internship-row.reverse .internship-photo,.internship-row.reverse .internship-content{grid-column:2;grid-row:auto}
+  .internship-row.reverse .internship-content{order:2}
+  .internship-row.reverse .internship-photo{order:1}
+  .internship-rail:before{left:29px}
+  .skill-cluster{grid-template-columns:repeat(2,1fr)}
+  .footer-photo{grid-template-columns:1fr .72fr}
+}
+@media(max-width:700px){
+  .section-pad{padding:105px 20px}
+  .hero{padding-top:125px}
+  .hero h1{font-size:78px}
+  .hero-visual{height:590px}
+  .hero-frame{width:300px;height:450px}
+  .hero-visual:before{inset:5%}
+  .internship-row,.internship-row.reverse{grid-template-columns:42px 1fr;gap:16px}
+  .internship-rail:before{left:21px}
+  .internship-photo{min-height:245px}
+  .internship-photo img{min-height:245px}
+  .internship-content h3{font-size:34px}
+  .skills-bento{grid-template-columns:1fr}
+  .skill-cluster{grid-template-columns:1fr}
+  .skill-feature{min-height:300px}
+  .footer-photo{height:auto;grid-template-columns:1fr;margin-top:45px}
+  .footer-photo-image{height:430px;min-height:430px;border-right:0;border-bottom:1px solid rgba(233,225,211,.1)}
+  .footer-photo-copy{min-height:300px;padding:35px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-visual:before,.hero-visual:after{animation:none!important}
+}
