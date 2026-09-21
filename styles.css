@@ -137,3 +137,158 @@ footer a{color:#d8a394}
   .section-head h2,.skills-title h2,.contact h2,.mun-intro h2{font-size:58px}
   .exp-body h3{font-size:31px}
 }
+
+
+/* ===== 2026.09 ACTIVE PROFILE / TYPOGRAPHY REFINEMENT ===== */
+:root{
+  --paper:#f5f1e9;
+  --paper-2:#e9e1d5;
+  --ink:#18211e;
+  --ink-soft:#4d5b55;
+  --forest:#15382f;
+  --forest-2:#204b3f;
+  --rust:#8e3f36;
+  --gold:#b89562;
+  --burgundy:#642832;
+  --line:rgba(24,33,30,.14);
+}
+body{font-family:'DM Sans',Arial,sans-serif;letter-spacing:-.008em}
+.nav{height:84px}
+nav a,.nav-cta,.text-link,.brand,.section-kicker,.eyebrow,.mono,.tags span,.exp-image span,.hero-bottom,footer{font-family:'IBM Plex Mono',monospace}
+.hero{grid-template-columns:minmax(0,1.02fr) minmax(500px,.98fr);gap:2vw;padding-left:6vw;padding-right:5vw}
+.hero-copy{position:relative;z-index:6;max-width:720px}
+.hero h1{font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(92px,10.6vw,172px);line-height:.76;letter-spacing:-.065em;margin:30px 0 34px}
+.hero h1 em{font-weight:500}
+.hero-lede{max-width:610px;font-size:18px;line-height:1.85}
+.hero-meta{font-size:13px}
+.hero-actions{margin-top:34px}
+.hero-quote{position:relative;margin-top:40px;padding:18px 0 18px 26px;border-left:0;max-width:500px;font-size:22px;line-height:1.4}
+.hero-quote:before{content:'“';position:absolute;left:0;top:-16px;font:600 70px/.8 'Bodoni Moda',serif;color:var(--rust);opacity:.38}
+.hero-quote:after{content:'';position:absolute;left:0;bottom:0;width:72px;height:1px;background:var(--gold)}
+.hero-visual{min-height:720px;height:720px}
+.hero-frame{width:min(500px,72%);height:575px;border-radius:2px;background:#d7d0c4;border-color:rgba(24,33,30,.2);box-shadow:0 35px 90px rgba(24,33,30,.16),0 0 0 1px rgba(184,149,98,.14);z-index:4}
+.hero-frame:before{inset:11px;border-color:rgba(255,255,255,.78)}
+.hero-frame img{padding:15px}
+.hero-frame:after{content:'SHUBHAM RAJ · 2026';position:absolute;left:20px;bottom:17px;z-index:4;color:rgba(255,255,255,.85);font:8px/1 'IBM Plex Mono';letter-spacing:.18em;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.floating-card{border-radius:1px;padding:16px 18px}
+.card-one{left:0;top:19%}
+.card-two{right:-1%;bottom:18%}
+.vertical-label{color:#68756f}
+
+/* Active replacement for orbit: layered energy halo + sweep + moving nodes */
+.profile-energy{position:absolute;left:50%;top:50%;width:650px;height:650px;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+.energy-ring{position:absolute;left:50%;top:50%;border:1px solid rgba(142,63,54,.25);border-radius:50%;transform:translate(-50%,-50%);box-shadow:inset 0 0 40px rgba(184,149,98,.035),0 0 30px rgba(142,63,54,.025)}
+.ring-1{width:610px;height:610px;animation:energyBreath 4.6s ease-in-out infinite,energySpin 24s linear infinite}
+.ring-2{width:530px;height:530px;border-style:dashed;border-color:rgba(184,149,98,.34);animation:energyBreath 3.8s ease-in-out infinite reverse,energySpinReverse 18s linear infinite}
+.ring-3{width:450px;height:450px;border-color:rgba(21,56,47,.22);animation:energyBreath 3.2s ease-in-out infinite,energySpin 14s linear infinite}
+.energy-sweep{position:absolute;left:50%;top:50%;width:315px;height:315px;transform:translate(-50%,-50%);border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 285deg,rgba(142,63,54,.02) 312deg,rgba(142,63,54,.6) 340deg,transparent 356deg);filter:blur(.2px);animation:sweep 5.5s linear infinite}
+.energy-node{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 4px rgba(142,63,54,.08),0 0 22px rgba(142,63,54,.5);animation:nodePulse 2.2s ease-in-out infinite}
+.node-1{left:17%;top:29%;animation-delay:-.3s}
+.node-2{right:13%;top:39%;animation-delay:-1s}
+.node-3{left:26%;bottom:16%;animation-delay:-1.6s}
+.node-4{right:24%;bottom:25%;animation-delay:-.7s}
+.profile-energy:after{content:'';position:absolute;inset:22%;border-radius:50%;background:radial-gradient(circle,rgba(184,149,98,.11),rgba(184,149,98,.025) 42%,transparent 68%);animation:coreGlow 3.6s ease-in-out infinite}
+
+/* Better quote and editorial rhythm */
+.quote{position:relative;margin-top:48px;padding:28px 0 10px 30px;border-top:0;border-bottom:1px solid var(--line);font:italic 21px/1.5 'Bodoni Moda',serif;color:var(--rust)}
+.quote:before{content:'“';position:absolute;left:0;top:17px;font:600 54px/.8 'Bodoni Moda',serif;color:var(--gold);opacity:.8}
+.experience-quote,.section-quote{border-left:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:27px 50px;margin-bottom:48px;text-align:center}
+.experience-quote:before,.section-quote:before{content:'✦';display:block;color:var(--gold);font-size:13px;margin-bottom:8px}
+.experience-quote p,.section-quote p{font-size:24px;max-width:900px;margin:0 auto}
+.section-quote{background:linear-gradient(90deg,transparent,rgba(142,63,54,.035),transparent)}
+.section-quote:before{margin-bottom:8px}
+
+/* Internship cards: all four-style covers visually identical */
+.experience-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.exp-card{border-radius:2px}
+.exp-image,.featured .exp-image{height:310px!important}
+.exp-image img{object-position:center 45%!important;filter:saturate(.88) contrast(1.04)!important}
+.exp-image:before{content:'LEGAL PRACTICE';position:absolute;right:18px;top:18px;z-index:2;color:rgba(255,255,255,.88);font:8px 'IBM Plex Mono';letter-spacing:.16em}
+.exp-image span{left:18px;bottom:16px;padding:7px 9px}
+.exp-body h3{font-size:35px;line-height:1.04}
+.exp-body>p:not(.mono){font-size:15.5px;line-height:1.8}
+.tags{margin:25px 0}
+.exp-card:hover .exp-image img{transform:scale(1.035)}
+.exp-body a{font-size:9px;letter-spacing:.08em}
+
+/* University image: image left, information right, with clean framing */
+.about-photo{height:410px;grid-template-columns:1.6fr .85fr}
+.about-photo-media{position:relative;overflow:hidden;min-width:0}
+.about-photo-media img{height:100%!important}
+.photo-index{position:absolute;top:18px;left:18px;padding:8px 10px;background:rgba(21,56,47,.9);color:#fff;font:8px 'IBM Plex Mono';letter-spacing:.16em}
+.about-photo>div:last-child{padding:42px}
+.about-photo b{font-size:34px}
+
+/* More generous editorial typography */
+.section-head h2,.skills-title h2,.contact h2,.mun-intro h2{font-size:clamp(58px,6.5vw,92px);line-height:.9}
+.skills-grid{grid-template-columns:repeat(4,1fr)}
+.skill{min-height:285px;padding:29px}
+.skill h3{font-size:27px;line-height:1.05}
+.skill p{font-size:13px;line-height:1.8}
+.mun-panel{min-height:455px;padding:38px}
+.mun-panel h3{font-family:'Bodoni Moda',Georgia,serif;font-size:64px}
+.mun-panel p{font-size:15px}
+.mun-list span{font-size:10px;line-height:1.5}
+.lead-item{padding:27px 0}
+.lead-item b{font-family:'Bodoni Moda',Georgia,serif;font-size:20px}
+.lead-item small{font-size:12.5px}
+
+/* Better final photo framing */
+.footer-photo{height:500px;border:1px solid rgba(24,33,30,.16)}
+.footer-photo img{object-position:center 28%}
+.footer-overlay{padding:42px}
+.footer-overlay span:first-child{font-size:14px}
+
+/* Active micro-interactions */
+.btn,.text-link,.nav a,.nav-cta,.exp-card,.mun-panel,.skill,.lead-item,.floating-card{transition:transform .35s cubic-bezier(.2,.8,.2,1),background .35s,border-color .35s,box-shadow .35s,color .35s}
+.text-link:hover{transform:translateX(5px)}
+.nav-cta:hover{background:var(--forest);color:var(--paper);transform:translateY(-2px)}
+.floating-card:hover{transform:translateY(-6px) rotate(-1deg)!important;border-color:rgba(184,149,98,.55)}
+
+/* Keep motion elegant on smaller screens */
+@keyframes energyBreath{0%,100%{opacity:.38;transform:translate(-50%,-50%) scale(.97)}50%{opacity:.85;transform:translate(-50%,-50%) scale(1.025)}}
+@keyframes energySpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes energySpinReverse{to{transform:translate(-50%,-50%) rotate(-360deg)}}
+@keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes nodePulse{0%,100%{transform:scale(.75);opacity:.5}50%{transform:scale(1.35);opacity:1}}
+@keyframes coreGlow{0%,100%{opacity:.45;transform:scale(.9)}50%{opacity:1;transform:scale(1.08)}}
+
+@media(max-width:1100px) and (min-width:901px){
+  .hero{grid-template-columns:1fr .9fr}
+  .hero h1{font-size:clamp(82px,9vw,125px)}
+  .hero-frame{width:430px;height:540px}
+  .profile-energy{width:570px;height:570px}
+  .skills-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-left:5vw;padding-right:5vw}
+  .hero-visual{height:620px;min-height:620px}
+  .profile-energy{width:590px;height:590px}
+  .hero-frame{width:360px;height:500px}
+  .experience-grid{grid-template-columns:1fr}
+  .exp-image,.featured .exp-image{height:300px!important}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .hero h1{font-size:76px;line-height:.8}
+  .hero-lede{font-size:16px}
+  .hero-visual{height:520px;min-height:520px}
+  .profile-energy{width:440px;height:440px}
+  .hero-frame{width:300px;height:420px}
+  .hero-frame img{padding:10px}
+  .floating-card{padding:12px 14px}
+  .card-one{left:-4px}
+  .card-two{right:-4px}
+  .experience-quote,.section-quote{padding:22px 12px}
+  .experience-quote p,.section-quote p{font-size:19px}
+  .about-photo{height:auto;grid-template-columns:1fr}
+  .about-photo-media{height:300px}
+  .about-photo>div:last-child{padding:28px}
+  .skills-grid{grid-template-columns:1fr}
+  .skill{min-height:220px}
+  .footer-photo{height:330px}
+  .footer-overlay{padding:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .profile-energy *,.marquee div,.floating-card{animation:none!important}
+}
