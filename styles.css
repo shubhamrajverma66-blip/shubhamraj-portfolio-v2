@@ -617,3 +617,175 @@ body{background:var(--royal-black);color:var(--royal-ivory)}
  .hero-signal{font-size:7px!important;bottom:11%!important}
  .footer-photo-image{height:520px!important;min-height:520px!important}
 }
+
+
+/* ===== 2026.09.21 ROYAL ELITE / STRUCTURE FIX ===== */
+:root{
+  --royal-black:#060708;
+  --royal-charcoal:#0d1014;
+  --royal-panel:#13171d;
+  --royal-ivory:#f0e8d8;
+  --royal-muted:#9d968b;
+  --royal-gold:#c6a66b;
+  --royal-gold-bright:#e2c991;
+  --royal-wine:#6b2737;
+  --royal-wine-soft:#8b3d4d;
+}
+
+/* Keep the entire portfolio in one coherent black / antique-gold / wine system. */
+body{background:var(--royal-black)!important;color:var(--royal-ivory)!important}
+.about,.leadership,.skills,.mun,.contact{background:var(--royal-charcoal)!important;color:var(--royal-ivory)!important}
+.about{background:linear-gradient(135deg,#090b0e 0%,#101318 58%,#0b0c10 100%)!important}
+.mun{background:linear-gradient(135deg,#07090b,#101217 62%,#0b0a0e)!important}
+.contact{background:linear-gradient(135deg,#090a0d,#111419 60%,#180d12)!important}
+.section-kicker,.eyebrow{color:var(--royal-gold)!important}
+.section-head h2,.skills-title h2,.contact h2,.mun-intro h2,.serif{color:var(--royal-ivory)!important}
+.section-head em,.skills-title em,.mun-intro em,.contact h2 em,.serif i{color:var(--royal-gold-bright)!important}
+.about-copy p:not(.big-copy),.section-head>p,.mun-intro p,.contact-copy>p{color:#aaa297!important}
+.big-copy{color:var(--royal-ivory)!important}
+.nav{background:rgba(6,7,8,.9)!important;border-color:rgba(198,166,107,.16)!important}
+nav a,.nav-cta,.text-link{color:#aaa195!important}
+nav a:hover,.text-link:hover{color:var(--royal-gold-bright)!important}
+.nav-cta{border-color:rgba(198,166,107,.28)!important}
+.nav-cta:hover{background:var(--royal-gold)!important;color:#070809!important}
+.btn.primary{background:var(--royal-gold)!important;color:#070809!important;border-color:var(--royal-gold)!important}
+.btn.primary:hover{background:var(--royal-gold-bright)!important}
+
+/* The two labels now genuinely revolve + travel, instead of only floating. */
+.floating-card{will-change:transform;transform-origin:center center!important}
+.card-one{animation:cardRevolveLeft 3.8s cubic-bezier(.45,.05,.35,.95) infinite!important}
+.card-two{animation:cardRevolveRight 4.2s cubic-bezier(.45,.05,.35,.95) infinite!important}
+.card-one:before,.card-two:before{width:104px!important;height:104px!important;border:1px solid rgba(226,201,145,.7)!important;box-shadow:0 0 22px rgba(198,166,107,.16)!important}
+@keyframes cardRevolveLeft{
+  0%{transform:rotate(-8deg) translateX(0) translateY(0)}
+  12.5%{transform:rotate(37deg) translateX(34px) translateY(-8px)}
+  25%{transform:rotate(82deg) translateX(52px) translateY(0)}
+  37.5%{transform:rotate(127deg) translateX(34px) translateY(8px)}
+  50%{transform:rotate(172deg) translateX(0) translateY(0)}
+  62.5%{transform:rotate(217deg) translateX(-34px) translateY(8px)}
+  75%{transform:rotate(262deg) translateX(-52px) translateY(0)}
+  87.5%{transform:rotate(307deg) translateX(-34px) translateY(-8px)}
+  100%{transform:rotate(352deg) translateX(0) translateY(0)}
+}
+@keyframes cardRevolveRight{
+  0%{transform:rotate(8deg) translateX(0) translateY(0)}
+  12.5%{transform:rotate(-37deg) translateX(-34px) translateY(8px)}
+  25%{transform:rotate(-82deg) translateX(-52px) translateY(0)}
+  37.5%{transform:rotate(-127deg) translateX(-34px) translateY(-8px)}
+  50%{transform:rotate(-172deg) translateX(0) translateY(0)}
+  62.5%{transform:rotate(-217deg) translateX(34px) translateY(-8px)}
+  75%{transform:rotate(-262deg) translateX(52px) translateY(0)}
+  87.5%{transform:rotate(-307deg) translateX(34px) translateY(8px)}
+  100%{transform:rotate(-352deg) translateX(0) translateY(0)}
+}
+.card-one small,.card-two small{animation:labelGoldFlash 1.9s ease-in-out infinite!important}
+@keyframes labelGoldFlash{0%,100%{letter-spacing:.12em;color:var(--royal-gold)}50%{letter-spacing:.22em;color:var(--royal-gold-bright)}}
+
+/* University image: fill the editorial frame cleanly instead of letterboxing. */
+.about-photo{height:500px!important;grid-template-columns:minmax(0,1.65fr) minmax(280px,.75fr)!important;background:#11151a!important;border:1px solid rgba(198,166,107,.2)!important}
+.about-photo-media{height:100%!important;padding:0!important;background:#090b0e!important;position:relative!important;overflow:hidden!important}
+.about-photo-media:after{content:'';position:absolute;inset:14px;border:1px solid rgba(226,201,145,.3);pointer-events:none;z-index:2}
+.about-photo-media img{width:100%!important;height:100%!important;padding:0!important;object-fit:cover!important;object-position:center center!important;background:#090b0e!important;filter:saturate(.8) contrast(1.04)!important}
+.about-photo>div:last-child{padding:50px!important;background:linear-gradient(145deg,#15191f,#0c0f13)!important}
+.about-photo b{color:var(--royal-ivory)!important}
+.about-photo span{color:#a59d91!important}
+
+/* Internship: dark royal editorial timeline, no parchment clash. */
+.experience{background:linear-gradient(135deg,#0a0c0f 0%,#101319 55%,#0b0d10 100%)!important;color:var(--royal-ivory)!important}
+.experience .section-kicker{color:var(--royal-gold)!important}
+.experience .section-head h2{color:var(--royal-ivory)!important}
+.experience .section-head>p{color:#a9a197!important}
+.experience-quote{background:rgba(198,166,107,.035)!important;border-color:rgba(198,166,107,.3)!important}
+.experience-quote p{color:#d8cdbb!important}
+.internship-rail:before{background:linear-gradient(var(--royal-gold),rgba(107,39,55,.2),var(--royal-gold))!important}
+.internship-row{border-color:rgba(198,166,107,.16)!important}
+.internship-index span{background:#0c0f13!important;border-color:rgba(198,166,107,.55)!important;color:var(--royal-gold-bright)!important}
+.internship-index i{background:rgba(198,166,107,.22)!important}
+.internship-photo{background:#080a0d!important;border-color:rgba(198,166,107,.22)!important;box-shadow:0 22px 55px rgba(0,0,0,.3)!important}
+.internship-photo img{filter:contrast(1.08) saturate(.86)!important}
+.internship-row:nth-child(1) .internship-photo img{filter:sepia(.18) contrast(1.12) saturate(.78)!important}
+.internship-row:nth-child(2) .internship-photo img{filter:grayscale(.65) contrast(1.14) brightness(.92)!important}
+.internship-row:nth-child(3) .internship-photo img{filter:saturate(1.05) contrast(1.06)!important}
+.internship-row:nth-child(4) .internship-photo img{filter:sepia(.28) saturate(.95) contrast(1.08)!important}
+.internship-photo:after{border-color:rgba(226,201,145,.32)!important}
+.internship-photo span{background:rgba(7,9,11,.88)!important;color:var(--royal-gold-bright)!important}
+.image-credit{color:rgba(238,231,216,.58)!important;background:rgba(7,9,11,.58)!important}
+.internship-content .mono{color:var(--royal-gold)!important}
+.internship-content h3{color:var(--royal-ivory)!important}
+.internship-content>p:not(.mono){color:#aaa196!important}
+.internship-content .tags span{border-color:rgba(198,166,107,.24)!important;color:#b8ae9f!important;background:rgba(198,166,107,.025)!important}
+.internship-content>a{color:var(--royal-gold-bright)!important}
+.internship-content>a:hover{color:#fff!important}
+
+/* Fix mobile internship overlap: image and written content are explicitly stacked. */
+@media(max-width:700px){
+  .about-photo{height:auto!important;grid-template-columns:1fr!important}
+  .about-photo-media{height:390px!important}
+  .about-photo>div:last-child{padding:30px!important}
+  .internship-row,.internship-row.reverse{
+    display:block!important;
+    position:relative!important;
+    padding:0 0 42px!important;
+    margin:0 0 38px!important;
+    border-bottom:1px solid rgba(198,166,107,.15)!important;
+  }
+  .internship-row .internship-index,
+  .internship-row.reverse .internship-index{
+    position:absolute!important;
+    left:0!important;
+    top:0!important;
+    width:42px!important;
+    height:100%!important;
+    z-index:5!important;
+  }
+  .internship-row .internship-index i{flex:1!important}
+  .internship-row .internship-photo,
+  .internship-row.reverse .internship-photo{
+    display:block!important;
+    width:calc(100% - 58px)!important;
+    height:auto!important;
+    min-height:0!important;
+    margin:0 0 0 58px!important;
+    aspect-ratio:16/10!important;
+  }
+  .internship-row .internship-photo img,
+  .internship-row.reverse .internship-photo img{
+    width:100%!important;height:100%!important;min-height:0!important;object-fit:cover!important;
+  }
+  .internship-row .internship-content,
+  .internship-row.reverse .internship-content{
+    display:block!important;
+    width:calc(100% - 58px)!important;
+    margin:0 0 0 58px!important;
+    padding:25px 3px 0 2px!important;
+    position:relative!important;
+    z-index:2!important;
+    background:transparent!important;
+  }
+  .internship-content h3{font-size:31px!important;line-height:1.04!important;margin:12px 0 13px!important}
+  .internship-content>p:not(.mono){font-size:14px!important;line-height:1.72!important}
+  .internship-content .tags{margin:18px 0!important}
+  .internship-content .tags span{font-size:9px!important;padding:7px 8px!important}
+}
+
+/* Final portrait: actually fill the frame, with a refined cinematic crop. */
+.footer-photo{background:#11151a!important;border-color:rgba(198,166,107,.22)!important}
+.footer-photo-image{background:#080a0d!important}
+.footer-photo-image img{width:100%!important;height:100%!important;padding:0!important;object-fit:cover!important;object-position:center 22%!important;filter:saturate(.82) contrast(1.05)!important}
+.footer-photo-image:before{inset:16px!important;border-color:rgba(226,201,145,.35)!important}
+.footer-photo-copy{background:linear-gradient(145deg,#15181d,#0b0d11)!important}
+.footer-photo-copy strong{color:var(--royal-ivory)!important}
+.footer-photo-copy strong em{color:var(--royal-gold-bright)!important}
+.photo-note{color:#999187!important}
+.photo-kicker{color:var(--royal-gold)!important}
+.email{color:var(--royal-ivory)!important;border-color:rgba(198,166,107,.28)!important}
+.contact-meta{color:#989084!important}
+.contact-meta a,.email span{color:var(--royal-gold-bright)!important}
+footer{background:#050607!important;color:#7f776d!important}
+footer a{color:var(--royal-gold-bright)!important}
+
+@media(max-width:560px){
+  .about-photo-media{height:330px!important}
+  .footer-photo-image{height:470px!important;min-height:470px!important}
+  .footer-photo-image img{object-position:center 18%!important}
+}
