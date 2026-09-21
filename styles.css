@@ -1418,3 +1418,73 @@ footer a{color:var(--royal-gold-bright)!important}
   .hero-copy .hero-meta span{font-size:18px!important}
   .hero-copy .hero-lede{font-size:17px!important}
 }
+
+
+/* ===== HERO FINAL: CARDS OUTSIDE PHOTO + LARGE COPY ===== */
+@media(min-width:1101px){
+  /* Revolve around the OUTSIDE perimeter of the portrait, not through it. */
+  @keyframes revolveResearch{
+    0%{transform:translate(-50%,-50%) translate(0,-470px)}
+    12.5%{transform:translate(-50%,-50%) translate(430px,-470px)}
+    25%{transform:translate(-50%,-50%) translate(430px,0)}
+    37.5%{transform:translate(-50%,-50%) translate(430px,470px)}
+    50%{transform:translate(-50%,-50%) translate(0,470px)}
+    62.5%{transform:translate(-50%,-50%) translate(-430px,470px)}
+    75%{transform:translate(-50%,-50%) translate(-430px,0)}
+    87.5%{transform:translate(-50%,-50%) translate(-430px,-470px)}
+    100%{transform:translate(-50%,-50%) translate(0,-470px)}
+  }
+  @keyframes revolveMun{
+    0%{transform:translate(-50%,-50%) translate(0,470px)}
+    12.5%{transform:translate(-50%,-50%) translate(-430px,470px)}
+    25%{transform:translate(-50%,-50%) translate(-430px,0)}
+    37.5%{transform:translate(-50%,-50%) translate(-430px,-470px)}
+    50%{transform:translate(-50%,-50%) translate(0,-470px)}
+    62.5%{transform:translate(-50%,-50%) translate(430px,-470px)}
+    75%{transform:translate(-50%,-50%) translate(430px,0)}
+    87.5%{transform:translate(-50%,-50%) translate(430px,470px)}
+    100%{transform:translate(-50%,-50%) translate(0,470px)}
+  }
+  .floating-card.card-one,
+  .floating-card.card-two{
+    animation-duration:75s!important;
+    animation-timing-function:linear!important;
+  }
+}
+
+/* Much larger information beneath the name. */
+.hero-copy .hero-meta{
+  font-size:32px!important;
+  line-height:1.6!important;
+  margin-top:4px!important;
+}
+.hero-copy .hero-meta strong{
+  font-size:28px!important;
+}
+.hero-copy .hero-meta span{
+  font-size:29px!important;
+}
+.hero-copy .hero-lede{
+  font-size:28px!important;
+  line-height:1.72!important;
+  max-width:780px!important;
+  margin-top:30px!important;
+}
+.hero-copy .hero-actions .btn,
+.hero-copy .hero-actions .text-link{
+  font-size:19px!important;
+}
+@media(max-width:900px){
+  .hero-copy .hero-meta{font-size:25px!important}
+  .hero-copy .hero-meta strong{font-size:22px!important}
+  .hero-copy .hero-meta span{font-size:23px!important}
+  .hero-copy .hero-lede{font-size:22px!important}
+  .hero-copy .hero-actions .btn,
+  .hero-copy .hero-actions .text-link{font-size:18px!important}
+}
+@media(max-width:560px){
+  .hero-copy .hero-meta{font-size:21px!important}
+  .hero-copy .hero-meta strong{font-size:19px!important}
+  .hero-copy .hero-meta span{font-size:20px!important}
+  .hero-copy .hero-lede{font-size:19px!important}
+}
