@@ -1690,3 +1690,37 @@ body{background:var(--ink)!important;color:var(--cream)!important}
 .contact-meta a{color:var(--gold-light)!important}
 .mun-panel,.skill-feature,.lead-item{border-color:rgba(200,164,93,.22)!important}
 .tags span,.mun-list span{border-color:rgba(200,164,93,.22)!important}
+
+
+/* ===== GOLD UNDERLINE HIERARCHY — IMPORTANT CONTENT ===== */
+.hero-copy h1,
+.about-title .serif,
+.section-head h2,
+.mun-intro h2,
+.skills-title h2,
+.contact h2,
+.internship-content h3,
+.mun-panel h3,
+.lead-item b,
+.skill-feature h3,
+.skill-cluster h4{
+  text-decoration-line:underline!important;
+  text-decoration-style:solid!important;
+  text-decoration-color:rgba(201,164,91,.82)!important;
+  text-decoration-thickness:2px!important;
+  text-underline-offset:8px!important;
+  text-decoration-skip-ink:auto!important;
+}
+.hero-copy h1{text-decoration-thickness:3px!important;text-underline-offset:16px!important}
+.about-title .serif{text-decoration-thickness:2px!important;text-underline-offset:9px!important}
+.internship-content h3,
+.mun-panel h3,
+.lead-item b,
+.skill-feature h3,
+.skill-cluster h4{
+  text-decoration-color:var(--gold)!important;
+  text-underline-offset:6px!important;
+}
+.contact-method span{font-weight:600!important}
+.phone-method .contact-icon{font-family:Arial,sans-serif!important;font-size:18px!important}
+.internship-photo img{object-fit:contain!important}
