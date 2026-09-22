@@ -2525,3 +2525,12 @@ a,button,
   color:#d8d1c8!important;
   -webkit-text-fill-color:#d8d1c8!important;
 }
+
+/* ===== FACULTY OF LAW — FORCE LIGHT OFF-WHITE ===== */
+.about-photo>div:last-child b,
+.about-photo>div:last-child b *{
+  color:#f1eee8!important;
+  -webkit-text-fill-color:#f1eee8!important;
+  text-shadow:none!important;
+  opacity:1!important;
+}
