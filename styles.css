@@ -2433,3 +2433,17 @@ body{cursor:none!important}
 @keyframes pointerFloat{from{margin-top:0;filter:brightness(1)}to{margin-top:-4px;filter:brightness(1.25)}}
 @keyframes pointerPulse{0%,100%{transform:scale(.75);opacity:.7}50%{transform:scale(1.2);opacity:1}}
 @media(max-width:700px){body{cursor:auto!important}.cursor-glow{display:none!important}}
+
+/* FINAL FIX — Faculty of Law label must sit on a light background */
+.about-photo > div:last-child{
+  background:var(--warm)!important;
+  color:var(--blue-ink)!important;
+  padding:24px 26px!important;
+  border-left:1px solid rgba(29,49,71,.12)!important;
+}
+.about-photo > div:last-child b{
+  color:var(--blue-ink)!important;
+}
+.about-photo > div:last-child span{
+  color:var(--slate)!important;
+}
