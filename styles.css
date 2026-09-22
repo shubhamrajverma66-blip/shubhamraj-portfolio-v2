@@ -2515,3 +2515,13 @@ a,button,
   }
   .cursor-glow{display:none!important}
 }
+
+/* ===== UNIVERSITY BLOCK — OFF-WHITE TEXT ===== */
+.about-photo>div:last-child b{
+  color:#eee9df!important;
+  -webkit-text-fill-color:#eee9df!important;
+}
+.about-photo>div:last-child span{
+  color:#d8d1c8!important;
+  -webkit-text-fill-color:#d8d1c8!important;
+}
