@@ -2421,3 +2421,15 @@ footer a{color:var(--copper-soft)!important}
 @media(max-width:700px){
   .cursor-glow{display:none!important}
 }
+
+/* FINAL FACULTY LABEL + CUSTOM POINTER */
+.about-photo > div:last-child b,.about-photo > div:last-child span{color:var(--blue-ink)!important}
+.about-photo > div:last-child span{color:var(--slate)!important}
+body{cursor:none!important}
+.cursor-glow{width:0!important;height:0!important;border:0!important;background:transparent!important;box-shadow:none!important;transition:none!important}
+.cursor-glow:before{content:""!important;position:absolute!important;width:18px!important;height:18px!important;left:0!important;top:0!important;border:2px solid var(--copper-soft)!important;border-radius:5px 50% 50% 50%!important;transform:rotate(45deg)!important;background:var(--midnight-2)!important;box-shadow:0 0 12px rgba(211,154,126,.65),0 0 28px rgba(182,106,77,.3)!important;animation:pointerFloat .9s ease-in-out infinite alternate!important}
+.cursor-glow:after{content:""!important;position:absolute!important;width:5px!important;height:5px!important;left:8px!important;top:8px!important;border:0!important;border-radius:50%!important;background:var(--copper-soft)!important;box-shadow:0 0 10px 3px rgba(211,154,126,.7)!important;animation:pointerPulse 1.1s ease-in-out infinite!important}
+.cursor-glow.cursor-active:before{width:23px!important;height:23px!important;border-color:#e5b09a!important;box-shadow:0 0 16px rgba(211,154,126,.85),0 0 34px rgba(182,106,77,.42)!important}
+@keyframes pointerFloat{from{margin-top:0;filter:brightness(1)}to{margin-top:-4px;filter:brightness(1.25)}}
+@keyframes pointerPulse{0%,100%{transform:scale(.75);opacity:.7}50%{transform:scale(1.2);opacity:1}}
+@media(max-width:700px){body{cursor:auto!important}.cursor-glow{display:none!important}}
