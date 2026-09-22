@@ -2101,3 +2101,80 @@ a,button{cursor:pointer}
 
 .cursor-ripple{position:fixed;z-index:21;width:12px;height:12px;border:1px solid var(--gold-legal);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:cursorRipple .65s ease-out forwards}
 @keyframes cursorRipple{0%{width:10px;height:10px;opacity:.95}100%{width:72px;height:72px;opacity:0}}
+
+/* ===== 2026.09.22 — MUTED LUXURY PALETTE + QUOTE BORDER FIX ===== */
+:root{
+  --oxblood:#321820;
+  --oxblood-deep:#251117;
+  --oxblood-soft:#5b3540;
+  --ivory:#e5ddd1;
+  --ivory-2:#eee7dc;
+  --charcoal:#202022;
+  --gold-legal:#a98955;
+  --gold-soft:#cbb68d;
+  --ink-legal:#2d2725;
+  --muted-legal:#655e59;
+}
+body{background:var(--ivory);color:var(--ink-legal)}
+.hero,#leadership,#contact{background:var(--oxblood)!important;color:var(--ivory)!important}
+#about,#mun,#skills{background:var(--ivory)!important;color:var(--ink-legal)!important}
+#experience{background:var(--charcoal)!important;color:var(--ivory)!important}
+
+/* Keep typography soft rather than stark white */
+.hero h1,.hero-meta strong,.hero-lede,.hero-meta span,
+#experience .section-head h2,#experience .experience-quote p,
+#leadership .section-head h2,#contact h2,
+#leadership .lead-item b,#contact .contact-label,
+#mun .mun-panel.accent h3,#mun .mun-panel.accent p,
+#mun .mun-panel.accent .panel-top,#mun .mun-panel.accent .mun-list span{
+  color:var(--ivory)!important;
+}
+#experience .section-head>p,#experience .experience-quote span,
+#experience .internship-content>p:not(.mono),
+#leadership .section-head>p,#leadership .lead-item small,
+#contact .contact-meta{color:#bdb2a7!important}
+#about .section-head h2,#mun .section-head h2,#skills .section-head h2,
+#about .serif,#about .big-copy,#mun .mun-intro h2,#skills .skills-title h2,
+#mun .mun-panel h3,#mun .mun-panel p,#mun .panel-top,
+#skills .skill-feature h3{color:var(--oxblood)!important}
+#about .about-copy p:not(.big-copy),#mun .mun-intro p,#skills .skill p{color:var(--muted-legal)!important}
+
+/* More restrained cards */
+#mun .mun-panel,#skills .skill-feature,#skills .skill-cluster article{
+  background:#e9e1d5!important;
+  border-color:rgba(50,24,32,.16)!important;
+}
+#mun .mun-panel.accent,#skills .skill-feature.dark{
+  background:#493039!important;
+  border-color:rgba(203,182,141,.45)!important;
+}
+#mun .mun-panel.accent h3,#mun .mun-panel.accent p,#mun .mun-panel.accent .panel-top,
+#mun .mun-panel.accent .mun-list span,
+#skills .skill-feature.dark h3,#skills .skill-feature.dark p,
+#skills .skill-feature.dark span,#skills .skill-feature.dark b{color:var(--ivory)!important}
+#mun .marquee{background:#493039!important;color:var(--ivory)!important;border-color:var(--gold-legal)!important}
+#mun .marquee i{color:var(--gold-soft)!important}
+
+/* Correct Beyond the Classroom quote: closed box, not open-ended */
+#leadership .leadership-quote{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:1180px!important;
+  margin:0 auto 48px!important;
+  border:1px solid rgba(203,182,141,.38)!important;
+  border-radius:2px!important;
+  padding:30px 42px 34px!important;
+  overflow:hidden!important;
+}
+#leadership .leadership-quote:after{
+  left:50%!important;
+  right:auto!important;
+  bottom:0!important;
+  width:90px!important;
+  height:2px!important;
+  transform:translateX(-50%)!important;
+}
+#leadership .section-head>p{
+  color:#c9bdb1!important;
+  font-size:20px!important;
+}
