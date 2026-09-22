@@ -2618,3 +2618,89 @@ a,button,
   #skills .skill-feature{min-height:290px;padding:28px}
   #skills .skill-feature h3{font-size:30px!important}
 }
+
+/* ===== SKILLS FINAL OVERRIDE — 2026.09.22 ===== */
+#skills .skills-bento{
+  width:min(1180px,100%);
+  margin:0 auto;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:20px!important;
+}
+#skills .skills-bento>.skill-feature{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:320px!important;
+  padding:38px!important;
+  border-radius:0!important;
+}
+#skills .skills-bento>.skill-feature>span,
+#skills .skill-cluster article>span{
+  color:#d39a7e!important;
+  font:9px 'IBM Plex Mono'!important;
+  letter-spacing:.14em!important;
+}
+#skills .skills-bento>.skill-feature h3{
+  margin:44px 0 16px!important;
+  font:600 36px/1.02 'Bodoni Moda',Georgia,serif!important;
+  color:#eee9df!important;
+}
+#skills .skills-bento>.skill-feature h3 em{
+  color:#d39a7e!important;
+}
+#skills .skills-bento>.skill-feature p{
+  max-width:560px!important;
+  margin:0!important;
+  color:#c1cbd2!important;
+  font:14px/1.8 'DM Sans',Arial,sans-serif!important;
+}
+#skills .skills-bento>.skill-feature .skill-line{
+  width:48px!important;
+  height:2px!important;
+  margin-top:auto!important;
+  background:#b66a4d!important;
+}
+#skills .skills-bento>.skill-feature>b{
+  margin-top:13px!important;
+  color:#d39a7e!important;
+  font:8px 'IBM Plex Mono'!important;
+  letter-spacing:.15em!important;
+}
+#skills .skills-bento>.skill-cluster{
+  grid-column:1/-1!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  margin-top:2px!important;
+  border-top:1px solid rgba(29,49,71,.15)!important;
+  border-left:1px solid rgba(29,49,71,.15)!important;
+}
+#skills .skills-bento>.skill-cluster>article{
+  min-height:175px!important;
+  padding:26px 24px!important;
+  border-right:1px solid rgba(29,49,71,.15)!important;
+  border-bottom:1px solid rgba(29,49,71,.15)!important;
+  background:rgba(242,238,229,.72)!important;
+}
+#skills .skills-bento>.skill-cluster>article h4{
+  margin:24px 0 10px!important;
+  color:#1d3147!important;
+  font:600 21px/1.08 'Bodoni Moda',Georgia,serif!important;
+}
+#skills .skills-bento>.skill-cluster>article p{
+  margin:0!important;
+  color:#536474!important;
+  font:12px/1.65 'DM Sans',Arial,sans-serif!important;
+}
+#skills .skills-bento>.skill-cluster>article:hover{
+  background:#f2eee5!important;
+  box-shadow:inset 0 -2px 0 #b66a4d!important;
+  transform:translateY(-3px)!important;
+}
+@media(max-width:900px){
+  #skills .skills-bento{grid-template-columns:1fr!important}
+  #skills .skills-bento>.skill-cluster{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+  #skills .skills-bento>.skill-cluster{grid-template-columns:1fr!important}
+  #skills .skills-bento>.skill-feature{min-height:285px!important;padding:28px!important}
+}
