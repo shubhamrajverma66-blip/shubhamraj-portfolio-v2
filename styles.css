@@ -2422,7 +2422,7 @@ footer a{color:var(--copper-soft)!important}
   .cursor-glow{display:none!important}
 }
 
-/* ===== INTERNSHIP NAMES + DATES — NAVY ONLY ===== */
+/* ===== ONLY INTERNSHIP NAME + DATE TEXT IN NAVY ===== */
 .internship-content h3,
 .internship-content h3 *,
 .internship-content h3 em,
