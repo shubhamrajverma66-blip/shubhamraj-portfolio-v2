@@ -13,3 +13,17 @@ document.querySelectorAll('.internship-photo img').forEach((img,i)=>{
     img.alt=internshipCovers[i][1];
   }
 });
+
+/* Cursor interaction — keep the native pointer, add a soft colour halo. */
+const cursorHalo=document.querySelector('.cursor-glow');
+document.querySelectorAll('a,button,.mun-panel,.lead-item,.skill-feature,.internship-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cursorHalo?.classList.add('cursor-active'));
+  el.addEventListener('mouseleave',()=>cursorHalo?.classList.remove('cursor-active'));
+});
+document.addEventListener('click',e=>{
+  const r=document.createElement('span');
+  r.className='cursor-ripple';
+  r.style.left=e.clientX+'px'; r.style.top=e.clientY+'px';
+  document.body.appendChild(r);
+  setTimeout(()=>r.remove(),650);
+});
