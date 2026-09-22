@@ -1056,3 +1056,60 @@ footer a{color:var(--royal-gold-bright)!important}
     font-size:34px!important;
   }
 }
+
+
+/* ===== 2026.09.22 — PROFILE WIDTH + FINAL READABILITY FIX ===== */
+/* Keep the hero/profile background full-width, but align its actual content
+   to the same ~1180px editorial column used by the sections below. */
+@media(min-width:901px){
+  .hero{
+    padding-left:max(5vw,calc((100vw - 1180px)/2))!important;
+    padding-right:max(5vw,calc((100vw - 1180px)/2))!important;
+  }
+}
+
+/* Internship titles: force dark text regardless of the inherited theme rules. */
+.internship-content{
+  background:#ebe3d6!important;
+  color:#1b1c1c!important;
+}
+.internship-content h3,
+.internship-content h3 *{
+  color:#16191a!important;
+  -webkit-text-fill-color:#16191a!important;
+  opacity:1!important;
+}
+.internship-content .mono{
+  color:#67452f!important;
+}
+.internship-content>p:not(.mono){
+  color:#3d3b37!important;
+}
+.internship-content .tags span{
+  color:#443d36!important;
+  -webkit-text-fill-color:#443d36!important;
+}
+
+/* Faculty of Law / University details: noticeably larger and darker. */
+.about-photo>div:last-child b{
+  color:#f0e8d8!important;
+  font-size:42px!important;
+  line-height:1.05!important;
+}
+.about-photo>div:last-child span{
+  display:block!important;
+  font-size:17px!important;
+  line-height:1.65!important;
+  letter-spacing:.01em!important;
+  color:#d2c7b8!important;
+}
+.about-photo>div:last-child span + span{
+  font-size:15px!important;
+  color:#b9aea1!important;
+}
+
+@media(max-width:700px){
+  .about-photo>div:last-child b{font-size:34px!important}
+  .about-photo>div:last-child span{font-size:16px!important}
+  .about-photo>div:last-child span + span{font-size:14px!important}
+}
