@@ -2422,8 +2422,7 @@ footer a{color:var(--copper-soft)!important}
   .cursor-glow{display:none!important}
 }
 
-/* ===== FINAL REQUEST — INTERNSHIP NAMES IN NAVY ===== */
-/* Preserve commit 9fc8a20e exactly; only make internship titles navy. */
+/* ===== INTERNSHIP TITLES — NAVY ===== */
 .internship-content h3,
 .internship-content h3 *,
 .internship-content h3 em{
