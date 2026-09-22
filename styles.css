@@ -2328,3 +2328,96 @@ nav a:hover,.text-link:hover{color:var(--copper-soft)!important}
 #contact .contact-meta a{color:var(--copper-soft)!important}
 .footer-photo{background:var(--navy)!important}
 footer a{color:var(--copper-soft)!important}
+
+
+/* ===== 2026.09.22 — CARD CONTRAST + VISIBLE CURSOR ===== */
+
+/* Make the Delegate + Legal Research cards clearly darker */
+#mun .mun-panel:not(.accent),
+#skills .skill-feature:not(.dark){
+  background:var(--midnight-2)!important;
+  border:1px solid rgba(211,154,126,.38)!important;
+  box-shadow:0 18px 50px rgba(16,28,45,.16)!important;
+}
+#mun .mun-panel:not(.accent) h3,
+#mun .mun-panel:not(.accent) p,
+#mun .mun-panel:not(.accent) .panel-top,
+#mun .mun-panel:not(.accent) .mun-list span,
+#skills .skill-feature:not(.dark) h3,
+#skills .skill-feature:not(.dark) p,
+#skills .skill-feature:not(.dark) span,
+#skills .skill-feature:not(.dark) b{
+  color:var(--cream-text)!important;
+}
+#mun .mun-panel:not(.accent) .mun-list{
+  border-color:rgba(238,233,223,.14)!important;
+}
+#mun .mun-panel:not(.accent) .mun-list span{
+  border-color:rgba(238,233,223,.12)!important;
+  color:#cbd3d8!important;
+}
+#skills .skill-feature:not(.dark) .skill-line{
+  background:var(--copper)!important;
+}
+#mun .mun-panel:not(.accent):hover,
+#skills .skill-feature:not(.dark):hover{
+  border-color:var(--copper-soft)!important;
+  transform:translateY(-7px)!important;
+}
+
+/* Stronger cursor: large visible halo + crosshair ring + trailing glow */
+.cursor-glow{
+  width:76px!important;
+  height:76px!important;
+  border:2px solid rgba(211,154,126,.85)!important;
+  background:radial-gradient(circle,rgba(211,154,126,.30) 0%,rgba(182,106,77,.16) 35%,transparent 72%)!important;
+  box-shadow:
+    0 0 18px rgba(211,154,126,.55),
+    0 0 45px rgba(182,106,77,.30),
+    inset 0 0 18px rgba(211,154,126,.18)!important;
+  mix-blend-mode:normal!important;
+  transition:width .18s ease,height .18s ease,background .18s ease,border-color .18s ease!important;
+}
+.cursor-glow:before,
+.cursor-glow:after{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  pointer-events:none!important;
+}
+.cursor-glow:before{
+  width:108px!important;
+  height:108px!important;
+  border:1px solid rgba(211,154,126,.32)!important;
+  border-radius:50%!important;
+  animation:cursorOrbit 2.8s linear infinite!important;
+}
+.cursor-glow:after{
+  width:8px!important;
+  height:8px!important;
+  background:var(--copper-soft)!important;
+  border-radius:50%!important;
+  box-shadow:0 0 14px 4px rgba(211,154,126,.65)!important;
+}
+.cursor-glow.cursor-active{
+  width:98px!important;
+  height:98px!important;
+  border-color:var(--copper-soft)!important;
+  background:radial-gradient(circle,rgba(211,154,126,.38),rgba(182,106,77,.16) 42%,transparent 73%)!important;
+  box-shadow:0 0 24px rgba(211,154,126,.7),0 0 65px rgba(182,106,77,.35)!important;
+}
+@keyframes cursorOrbit{
+  from{transform:translate(-50%,-50%) rotate(0deg)}
+  to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+.cursor-ripple{
+  width:18px!important;
+  height:18px!important;
+  border:2px solid var(--copper-soft)!important;
+  box-shadow:0 0 18px rgba(211,154,126,.65)!important;
+}
+@media(max-width:700px){
+  .cursor-glow{display:none!important}
+}
