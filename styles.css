@@ -2534,3 +2534,87 @@ a,button,
   text-shadow:none!important;
   opacity:1!important;
 }
+
+/* ===== 2026.09.22 — SKILLS BENTO REORGANISATION ===== */
+#skills .skills-bento{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+#skills .skill-feature{
+  min-height:330px;
+  padding:36px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+#skills .skill-feature h3{
+  font-size:34px!important;
+  line-height:1.02!important;
+  margin:42px 0 16px!important;
+}
+#skills .skill-feature h3 em{font-style:italic;color:var(--copper-soft)!important}
+#skills .skill-feature p{
+  max-width:500px;
+  font-size:14px!important;
+  line-height:1.75!important;
+}
+#skills .skill-feature .skill-line{
+  margin-top:auto;
+  width:46px;
+  height:2px;
+  background:var(--copper)!important;
+}
+#skills .skill-feature>b{
+  margin-top:13px;
+  font:8px 'IBM Plex Mono';
+  letter-spacing:.16em;
+  color:var(--copper-soft)!important;
+}
+#skills .skill-cluster{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(29,49,71,.15);
+  border-left:1px solid rgba(29,49,71,.15);
+}
+#skills .skill-cluster article{
+  min-height:175px;
+  padding:25px 24px;
+  border-right:1px solid rgba(29,49,71,.15);
+  border-bottom:1px solid rgba(29,49,71,.15);
+  transition:.3s ease;
+}
+#skills .skill-cluster article:hover{
+  background:var(--warm)!important;
+  transform:translateY(-3px);
+  box-shadow:inset 0 -2px 0 var(--copper);
+}
+#skills .skill-cluster article span{
+  font:9px 'IBM Plex Mono';
+  color:var(--copper)!important;
+  letter-spacing:.12em;
+}
+#skills .skill-cluster article h4{
+  margin:24px 0 9px;
+  font:600 22px/1.05 'Bodoni Moda',Georgia,serif;
+  color:var(--blue-ink)!important;
+}
+#skills .skill-cluster article p{
+  margin:0;
+  font-size:12px!important;
+  line-height:1.65!important;
+  color:var(--slate)!important;
+}
+#skills .skills-title{max-width:1180px;margin:25px auto 55px}
+@media(max-width:900px){
+  #skills .skills-bento{grid-template-columns:1fr}
+  #skills .skill-cluster{grid-column:auto;grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  #skills .skill-cluster{grid-template-columns:1fr}
+  #skills .skill-feature{min-height:290px;padding:28px}
+  #skills .skill-feature h3{font-size:30px!important}
+}
