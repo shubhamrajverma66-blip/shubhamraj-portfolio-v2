@@ -1844,3 +1844,65 @@ body{
   height:2px!important;
   background:linear-gradient(90deg,var(--gold),transparent)!important;
 }
+
+
+/* ===== FINAL FIX: CLEAN RAJ UNDERLINE + NAVY / BURGUNDY / GOLD PALETTE ===== */
+:root{
+  --ink:#08090d;
+  --navy:#101827;
+  --navy2:#182844;
+  --burgundy:#651d35;
+  --burgundy2:#8d2f4d;
+  --gold:#c8a45d;
+  --gold-light:#f0d99a;
+  --cream:#f5efe4;
+  --muted:#aaa7a1;
+}
+body{background:var(--ink)!important;color:var(--cream)!important}
+.hero{
+  background:
+    radial-gradient(circle at 76% 38%,rgba(141,47,77,.20),transparent 27%),
+    radial-gradient(circle at 18% 70%,rgba(200,164,93,.08),transparent 25%),
+    linear-gradient(120deg,#08090d 0%,#101827 52%,#21101a 100%)!important;
+}
+.section-dark{
+  background:
+    linear-gradient(145deg,#0a0d14 0%,#111d31 52%,#26111d 100%)!important;
+}
+.nav{background:rgba(8,9,13,.90)!important;border-bottom-color:rgba(200,164,93,.25)!important}
+.floating-card{background:linear-gradient(135deg,rgba(15,25,43,.97),rgba(54,16,32,.94))!important}
+.mun-panel.accent{background:linear-gradient(135deg,rgba(101,29,53,.28),rgba(16,24,39,.9))!important}
+.contact-method{background:linear-gradient(105deg,rgba(24,40,68,.82),rgba(71,22,42,.72))!important}
+.trophy,.skill-feature.dark{background:linear-gradient(145deg,rgba(18,29,49,.96),rgba(83,24,45,.62))!important}
+.hero h1 .hero-name-accent{
+  position:relative!important;
+  display:inline-block!important;
+  text-decoration:none!important;
+  padding-bottom:18px!important;
+}
+.hero h1 .hero-name-accent:after{
+  content:""!important;
+  position:absolute!important;
+  left:3%!important;
+  right:3%!important;
+  bottom:2px!important;
+  height:3px!important;
+  background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--burgundy2))!important;
+  border-radius:99px!important;
+  box-shadow:0 0 12px rgba(200,164,93,.20)!important;
+}
+.hero-copy h1,
+.about-title .serif,
+.section-head h2,
+.mun-intro h2,
+.skills-title h2,
+.contact h2,
+.internship-content h3,
+.mun-panel h3,
+.lead-item b,
+.skill-feature h3,
+.skill-cluster h4{
+  text-decoration:none!important;
+}
+.internship-photo{border:1px solid rgba(200,164,93,.30)!important;background:#0b1322!important}
+.internship-photo img{background:#0b1322!important}
