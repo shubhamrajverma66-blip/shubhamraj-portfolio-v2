@@ -1,4 +1,4 @@
-name: Deploy RajTech Assist to GitHub Pages
+name: Deploy RJ-UNITECH to GitHub Pages
 
 on:
   push:
@@ -29,8 +29,11 @@ jobs:
 
       - name: Prepare chatbot site
         run: |
+          rm -rf _site
           mkdir -p _site
           cp -R chatbot/. _site/
+          mkdir -p _site/chatbot
+          cp -R chatbot/. _site/chatbot/
           touch _site/.nojekyll
 
       - name: Setup Pages
