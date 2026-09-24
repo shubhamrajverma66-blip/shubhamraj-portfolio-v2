@@ -90,7 +90,7 @@ const SOURCES={
   directory:{label:"Official DTE College Directory",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469"},
   admissions:{label:"Official DTE First Year Admissions 2026–27",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012"},
   lateral:{label:"Official DTE Lateral Entry Admissions 2026–27",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31013"},
-  department:{label:"Official DTE Department Portal",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717"},
+  department:{label:"Official DTE Department Portal",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717"},\n  engineering:{label:"Government Engineering College Jaipur — Official",url:"https://hte.rajasthan.gov.in/GovernmentEngineeringCollegeJaipur/91347"},
   documents:{label:"Official DTE Documents List",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30745"}
 };
 
@@ -104,7 +104,7 @@ const ragChunks=[
  {id:"cutoff",keys:["cutoff","cut-off","cut off","rank","merit","कटऑफ","रैंक","मेरिट"],source:SOURCES.admissions,text:"Cut-off or allotment figures must be tied to the year, course/branch, category, round and admission route. Do not infer a current cut-off from an old year."},
  {id:"scholarship",keys:["scholarship","scholarships","financial aid","छात्रवृत्ति","स्कॉलरशिप"],source:SOURCES.department,text:"Scholarship availability, eligibility and deadlines are scheme- and session-specific; verify the current authorised Rajasthan government scheme source."},
  {id:"placement",keys:["placement","placements","job","salary","recruiter","alumni","प्लेसमेंट","नौकरी","सैलरी"],source:SOURCES.directory,text:"Placement figures are college- and year-specific. If a verified placement record is not in the knowledge base, the assistant must say it is unavailable rather than inventing a number."},
- {id:"btech",keys:["btech","b tech","b.tech","बीटेक","बी टेक"],source:SOURCES.department,text:"B.Tech is a degree programme. The current embedded college directory is primarily a Polytechnic/Diploma directory, so the assistant must not label a diploma-only record as a B.Tech college. Government Engineering College Jaipur is separately present in the embedded directory and has B.Tech-specific official notices."}
+ {id:"btech",keys:["btech","b tech","b.tech","बीटेक","बी टेक","reap","leep","engineering college"],source:SOURCES.engineering,text:"Government Engineering College Jaipur has official 2026 REAP/LEEP admission notices. Its official page lists a direct B.Tech first-year admission notice under REAP 2026 and a second-year lateral route under LEEP 2026."}
 ];
 
 function now(){return new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}
@@ -124,7 +124,7 @@ function isSpecificCollegeSignal(q){
    const name=norm(c.name);
    return s.includes(name)||name.split(" ").filter(w=>w.length>=5).some(w=>s.includes(w));
  });
- const hasCollegeWord=/(^|\s)(gpc|gwpc)(\s|$)/.test(s);
+ const hasCollegeWord=/(^|\\s)(gpc|gwpc|gec)(\\s|$)/.test(s)||s.includes("engineering college");
  return hasDistrict||hasName||hasCollegeWord;
 }
 function findColleges(q){
@@ -155,13 +155,11 @@ function answerInLang(en,hi,mrw){
 function collegeReply(q){
  const s=norm(q);
  if(isBTechQuery(q)){
-   if(isDirectoryQuery(q)||/\b(btech|b tech|b\.tech)\b/.test(s)){
-     return answerInLang(
-       "B.Tech ko Polytechnic/Diploma se alag rakha gaya hai. Is chatbot ka main college directory DTE Polytechnic/Diploma records par based hai. Government Engineering College Jaipur ka separate official record hai. Kisi specific B.Tech college ka naam batao, main available verified details dunga.",
-       "B.Tech को Polytechnic/Diploma से अलग रखा गया है। इस chatbot की मुख्य college directory DTE Polytechnic/Diploma records पर आधारित है। Government Engineering College Jaipur का अलग official record है। किसी specific B.Tech college का नाम बताइए।",
-       "B.Tech ने Polytechnic/Diploma सूं अलग राख्यो है। Main directory DTE Polytechnic/Diploma records पर based है। Government Engineering College Jaipur रो अलग official record है। Specific college रो नाम बताओ।"
-     )+sourceLine(SOURCES.department);
-   }
+   return answerInLang(
+     "B.Tech ke liye random Polytechnic college ko recommend nahi karunga. Government Engineering College Jaipur ka official DTE page 2026 me REAP B.Tech first-year admission aur LEEP lateral-entry notices publish kar raha hai. Agar aap branch, category, budget ya city batao, main verified records ke basis par options compare kar sakta hoon — bina arbitrary ranking ke.",
+     "B.Tech के लिए random Polytechnic college को recommend नहीं करूँगा। Government Engineering College Jaipur के official DTE page पर 2026 में REAP B.Tech first-year और LEEP lateral-entry notices हैं। Branch, category, budget या city बताइए, मैं verified records के आधार पर options compare करूँगा।",
+     "B.Tech खातर random Polytechnic college ने recommend नहीं करूं। Government Engineering College Jaipur रा official DTE page पर 2026 में REAP B.Tech first-year अर LEEP lateral-entry notices हैं। Branch, category, budget या city बताओ, मैं verified records आधार पर options compare करूं।"
+   )+sourceLine(SOURCES.engineering);
  }
  const found=findColleges(q);
  if(!found.length)return null;
@@ -212,13 +210,19 @@ function answer(q){
  const clean=q.trim();
  if(!clean)return "";
  // Contextual follow-up: “fees”, “fee bata”, “iski fees?” etc. must use the last selected college.
- if(state.selectedCollege && isFeeQuery(clean)){
-   const c=state.selectedCollege;
+ if(isFeeQuery(clean)){
+   if(!state.selectedCollege){
+     const matches=findColleges(clean);
+     if(matches.length===1) state.selectedCollege=matches[0];
+   }
+   if(state.selectedCollege){
+     const c=state.selectedCollege;
    return answerInLang(
      c.name+" ki current fee ka verified amount mere embedded record me available nahi hai. Main guess nahi karunga. 2026–27 fee ke liye official DTE fee-related documents/college page se verify karein.\n\nCollege context: "+c.name+" — "+c.district+".",
      c.name+" की current fee का verified amount मेरे embedded record में उपलब्ध नहीं है। मैं guess नहीं करूँगा। 2026–27 fee के लिए official DTE fee-related documents/college page से verify करें।\n\nCollege context: "+c.name+" — "+c.district+"।",
      c.name+" री current fee रो verified amount म्हारे embedded record में उपलब्ध नहीं है। मैं अंदाजो नहीं लगाऊँगा। 2026–27 री fee official DTE fee documents/college page सूं verify करो।\n\nCollege context: "+c.name+" — "+c.district+"।"
    )+sourceLine(SOURCES.documents);
+   }
  }
  // A bare fee query with no college context asks for clarification instead of returning an unrelated answer.
  if(isFeeQuery(clean)){
