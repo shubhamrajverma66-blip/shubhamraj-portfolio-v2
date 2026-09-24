@@ -290,7 +290,7 @@ async function liveAnswer(q){
    const b=el.querySelector(".bubble");
    return b?{role:el.classList.contains("user")?"user":"assistant",content:b.textContent.trim()}:null;
   }).filter(Boolean);
-  const r=await fetch(BACKEND_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,lang:state.lang,history:turns})});
+  const r=await fetch(BACKEND_URL,{method:"POST",headers:{"Content-Type":"application/json","apikey":window.RAJTECH_CONFIG.publishableKey,"Authorization":"Bearer "+window.RAJTECH_CONFIG.publishableKey},body:JSON.stringify({message:q,lang:state.lang,history:turns})});
   const data=await r.json();
   if(!r.ok)throw new Error(data.error||"Backend error");
   return (data.answer||"").trim()+((data.sources&&data.sources.length)?("\n\nSources:\n"+data.sources.map(x=>"["+x.id+"] "+x.title+" — "+x.url).join("\n")):"");
