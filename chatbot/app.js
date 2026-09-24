@@ -1,3 +1,4 @@
+const BACKEND_URL=(window.RAJTECH_CONFIG&&window.RAJTECH_CONFIG.backendUrl)||"";
 const state={lang:"en"};
 const colleges=[
 ["Government Polytechnic College, Ajmer","Ajmer",1958,"0145-2695195","Makhupura, Nasirabad Road, Ajmer-305002"],
@@ -282,12 +283,25 @@ function runRegressionSuite(){
  if(st)st.textContent=failed===0?"Online • 10,000+ routing checks passed":"Online • QA check needs review";
  state.selectedCollege=null;
 }
-function send(){
+async function liveAnswer(q){
+ if(!BACKEND_URL)return null;
+ try{
+  const turns=[...messages.querySelectorAll(".msg")].slice(-8).map(el=>{
+   const b=el.querySelector(".bubble");
+   return b?{role:el.classList.contains("user")?"user":"assistant",content:b.textContent.trim()}:null;
+  }).filter(Boolean);
+  const r=await fetch(BACKEND_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,lang:state.lang,history:turns})});
+  const data=await r.json();
+  if(!r.ok)throw new Error(data.error||"Backend error");
+  return (data.answer||"").trim()+((data.sources&&data.sources.length)?("\n\nSources:\n"+data.sources.map(x=>"["+x.id+"] "+x.title+" — "+x.url).join("\n")):"");
+ }catch(err){console.warn("Live RAG unavailable:",err);return null;}
+}
+async function send(){
  const q=input.value.trim();if(!q)return;
  addMessage(q,"user");input.value="";
- const typing=document.createElement("div");typing.className="msg";typing.innerHTML='<div class="bubble">Typing…</div>';
+ const typing=document.createElement("div");typing.className="msg";typing.innerHTML='<div class="bubble">Thinking from verified DTE records…</div>';
  messages.append(typing);messages.scrollTop=messages.scrollHeight;
- setTimeout(()=>{typing.remove();addMessage(answer(q))},120);
+ setTimeout(async()=>{typing.remove();const live=await liveAnswer(q);addMessage(live||answer(q));},80);
 }
 const messages=document.getElementById("messages"),input=document.getElementById("userInput"),suggestions=document.getElementById("suggestions");
 document.getElementById("sendBtn").onclick=send;
