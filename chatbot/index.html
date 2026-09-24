@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>RajTech Assist — Rajasthan Technical Education</title>
+<meta name="description" content="Multilingual admission assistance prototype for Rajasthan technical education.">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+<div class="brand"><div class="brand-mark">R</div><div><div class="brand-name">RajTech Assist</div><div class="brand-sub">Technical Education • Rajasthan</div></div></div>
+<div class="status"><span class="dot"></span> Prototype • 24×7 interface</div>
+</header>
+<main class="layout">
+<aside class="side-panel">
+<div class="side-intro"><span class="eyebrow">AI ADMISSION ASSISTANT</span><h1>One conversation.<br><em>Many answers.</em></h1><p>Explore admission guidance, college information and student support in <b>English, हिन्दी and मारवाड़ी</b>.</p></div>
+<div class="language-box"><label>Conversation language</label><div class="lang-grid"><button class="lang active" data-lang="en">English</button><button class="lang" data-lang="hi">हिन्दी</button><button class="lang" data-lang="mrw">मारवाड़ी</button></div></div>
+<div class="quick-box"><label>Quick questions</label>
+<button class="quick">How does admission work?</button><button class="quick">What is the eligibility?</button><button class="quick">Tell me about fees.</button><button class="quick">What scholarships are available?</button><button class="quick">How can I check previous cut-offs?</button><button class="quick">What about placements?</button>
+</div>
+<div class="notice"><span>i</span><p><b>Prototype note:</b> answers are driven by a structured demo knowledge base. Official figures and seat decisions should always be verified from authorised DTE sources.</p></div>
+</aside>
+<section class="chat-card">
+<div class="chat-head"><div class="bot-avatar">RA</div><div><h2>Rajasthan Admission Assistant</h2><p>Ask naturally — no menu required.</p></div><button id="clearBtn" class="icon-btn" title="Clear conversation">↺</button></div>
+<div id="messages" class="messages" aria-live="polite"></div><div class="suggestions" id="suggestions"></div>
+<div class="composer"><button id="voiceBtn" class="voice-btn" title="Voice input">⌁</button><input id="userInput" autocomplete="off" placeholder="Ask about admission, fees, scholarships, cut-offs…"><button id="sendBtn" class="send-btn">Send <span>↗</span></button></div>
+<div class="composer-note">Try: “What documents do I need?” • “फीस कितनी है?” • “कटऑफ कैसे देखें?”</div>
+</section>
+</main>
+</div>
+<script src="./app.js"></script>
+</body></html>
