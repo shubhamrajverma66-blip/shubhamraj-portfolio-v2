@@ -3,29 +3,40 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>RajTech Assist — Rajasthan Technical Education</title>
-<meta name="description" content="Multilingual admission assistance prototype for Rajasthan technical education.">
+<meta name="description" content="RajTech Assist — multilingual technical education admission and college information assistant for Rajasthan.">
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <div class="app-shell">
 <header class="topbar">
 <div class="brand"><div class="brand-mark">R</div><div><div class="brand-name">RajTech Assist</div><div class="brand-sub">Technical Education • Rajasthan</div></div></div>
-<div class="status"><span class="dot"></span> Prototype • 24×7 interface</div>
+<div class="status"><span class="dot"></span><span id="statusText">Online • 24×7</span></div>
 </header>
 <main class="layout">
 <aside class="side-panel">
-<div class="side-intro"><span class="eyebrow">AI ADMISSION ASSISTANT</span><h1>One conversation.<br><em>Many answers.</em></h1><p>Explore admission guidance, college information and student support in <b>English, हिन्दी and मारवाड़ी</b>.</p></div>
+<div class="side-intro"><span class="eyebrow">RAJASTHAN TECHNICAL EDUCATION</span><h1>Your admission.<br><em>One smart chat.</em></h1><p>Ask naturally in <b>English, Hindi or Hinglish</b>. Marwari mode is also available. Search the DTE college directory, admission guidance and student FAQs from one place.</p></div>
 <div class="language-box"><label>Conversation language</label><div class="lang-grid"><button class="lang active" data-lang="en">English</button><button class="lang" data-lang="hi">हिन्दी</button><button class="lang" data-lang="mrw">मारवाड़ी</button></div></div>
-<div class="quick-box"><label>Quick questions</label>
-<button class="quick">How does admission work?</button><button class="quick">What is the eligibility?</button><button class="quick">Tell me about fees.</button><button class="quick">What scholarships are available?</button><button class="quick">How can I check previous cut-offs?</button><button class="quick">What about placements?</button>
+<div class="quick-box"><label>Try asking</label>
+<button class="quick" data-q="Rajasthan me admission kaise hota hai?">Admission kaise hota hai?</button>
+<button class="quick" data-q="Eligibility kya hai for diploma?">Eligibility kya hai?</button>
+<button class="quick" data-q="fees kitni hai?">Fees kitni hai?</button>
+<button class="quick" data-q="scholarship ke options kya hain?">Scholarship options?</button>
+<button class="quick" data-q="Government Polytechnic College Kota ke bare me batao">Kota college details</button>
+<button class="quick" data-q="Rajasthan me saare government polytechnic colleges dikhao">College directory</button>
 </div>
-<div class="source-box"><label>Official source desk</label><a href="https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012" target="_blank" rel="noopener">DTE • Admissions 2026–27 ↗</a><a href="https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717" target="_blank" rel="noopener">DTE • Department portal ↗</a></div><div class="notice"><span>i</span><p><b>Prototype note:</b> demo answers are structured for the project. Current rules, seats, fees and allotments should be verified from authorised DTE sources.</p></div>
+<div class="source-box"><label>Official source desk</label>
+<a href="https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469" target="_blank" rel="noopener">DTE • College Directory ↗</a>
+<a href="https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012" target="_blank" rel="noopener">DTE • Admissions 2026–27 ↗</a>
+<a href="https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31013" target="_blank" rel="noopener">DTE • Lateral Entry 2026–27 ↗</a>
+<a href="https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717" target="_blank" rel="noopener">DTE • Department Portal ↗</a>
+</div>
+<div class="notice"><span>i</span><p><b>Verified-data rule:</b> current dates, fees, seats, cut-offs and scheme rules can change. RajTech Assist shows the source/year where available and directs users to the official DTE page for final verification.</p></div>
 </aside>
 <section class="chat-card">
-<div class="chat-head"><div class="bot-avatar">RA</div><div><h2>Rajasthan Admission Assistant</h2><p>Ask naturally — no menu required.</p></div><button id="clearBtn" class="icon-btn" title="Clear conversation">↺</button></div>
+<div class="chat-head"><div class="bot-avatar">RA</div><div><h2>Rajasthan Admission Assistant</h2><p id="headSub">Ask in English, Hindi or Hinglish — no menu required.</p></div><button id="clearBtn" class="icon-btn" title="Clear conversation">↺</button></div>
 <div id="messages" class="messages" aria-live="polite"></div><div class="suggestions" id="suggestions"></div>
-<div class="composer"><button id="voiceBtn" class="voice-btn" title="Voice input">⌁</button><input id="userInput" autocomplete="off" placeholder="Ask about admission, fees, scholarships, cut-offs…"><button id="sendBtn" class="send-btn">Send <span>↗</span></button></div>
-<div class="composer-note">Try: “What documents do I need?” • “फीस कितनी है?” • “कटऑफ कैसे देखें?”</div>
+<div class="composer"><button id="voiceBtn" class="voice-btn" title="Voice input">⌁</button><input id="userInput" autocomplete="off" placeholder="Try: “Rajasthan me admission kaise hota hai?”"><button id="sendBtn" class="send-btn">Send <span>↗</span></button></div>
+<div class="composer-note">Hinglish examples: “fees kitni hai”, “Kota ka polytechnic batao”, “cutoff kaise check karu”, “documents kya lagenge?”</div>
 </section>
 </main>
 </div>
