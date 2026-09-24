@@ -124,7 +124,7 @@ function isSpecificCollegeSignal(q){
    const name=norm(c.name);
    return s.includes(name)||name.split(" ").filter(w=>w.length>=5).some(w=>s.includes(w));
  });
- const hasCollegeWord=/(^|\\s)(gpc|gwpc|gec)(\\s|$)/.test(s)||s.includes("engineering college");
+ const hasCollegeWord=/(^|\s)(gpc|gwpc|gec)(\s|$)/.test(s)||s.includes("engineering college");
  return hasDistrict||hasName||hasCollegeWord;
 }
 function findColleges(q){
@@ -171,6 +171,14 @@ function collegeReply(q){
      "Official DTE directory में matched records:\n"+found.map(c=>c.name+" — "+c.district).join("\n")+"\n\nआ पूरी Rajasthan री complete list नहीं है। पूरी live list खातर official DTE directory खोलो।"
    )+sourceLine(SOURCES.directory);
  }
+ if(found.length>1 && !s.includes(norm(found[0].name))){
+   state.selectedCollege=null;
+   return answerInLang(
+     "I found multiple matching colleges. Please specify the exact college name or city so I don't give you the wrong record:\n"+found.slice(0,8).map(c=>c.name+" — "+c.district).join("\n"),
+     "कई matching colleges मिले हैं। गलत record देने से बचने के लिए exact college name या city बताइए:\n"+found.slice(0,8).map(c=>c.name+" — "+c.district).join("\n"),
+     "कई matching colleges मिल्या। गलत record सूं बचण खातर exact college नाम या city बताओ:\n"+found.slice(0,8).map(c=>c.name+" — "+c.district).join("\n")
+   )+sourceLine(SOURCES.directory);
+ }
  state.selectedCollege=found[0];
  const c=found[0];
  return c.name+"\nDistrict: "+c.district+"\nEstablished: "+(c.year||"Not shown")+"\nPhone: "+(c.phone||"Not listed")+"\nAddress: "+(c.address||"Not listed")+"\n\n"+SOURCES.directory.label+sourceLine(SOURCES.directory);
@@ -202,6 +210,13 @@ function intentReply(intent,q){
      )+sourceLine(hit.c.source);
    }
    return r+sourceLine(hit.c.source);
+ }
+ if(intent==="fallback"){
+   return answerInLang(
+     "I don't have a verified record for that exact question yet, so I won't invent an answer. Ask with the college name + course/year, or use the official DTE source desk.",
+     "इस exact सवाल का verified record मेरे पास अभी नहीं है, इसलिए मैं अनुमान नहीं लगाऊँगा। College name + course/year के साथ पूछें, या official DTE source desk देखें।",
+     "इस exact सवाल रो verified record म्हारे पास नहीं है, इसलिए मैं अंदाजो नहीं लगाऊँगा। College नाम + course/year साथ पूछो, या official DTE source desk देखो।"
+   );
  }
  return r;
 }
