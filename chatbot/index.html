@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>RJ-UNITECH — Rajasthan Technical Education Assistant</title>
 <meta name="description" content="RJ-UNITECH — multilingual technical education admission assistant for Rajasthan.">
-<link rel="stylesheet" href="./styles.css?v=20260924-fix4">
+<link rel="stylesheet" href="./styles.css?v=20260924-fix5">
 </head>
 <body>
 <div class="app-shell">
@@ -40,5 +40,45 @@
 </section>
 </main>
 </div>
-<script src="./config.js?v=20260924-fix4"></script><script src="./app.js?v=20260924-fix4"></script>
+<script src="./config.js?v=20260924-fix5"></script><script src="./app.js?v=20260924-fix5"></script>
+<script>
+(function(){
+  const input=document.getElementById("userInput");
+  const messages=document.getElementById("messages");
+  const sendBtn=document.getElementById("sendBtn");
+  if(!input||!messages||!sendBtn)return;
+  function fallbackSend(){
+    const q=(input.value||"").trim();
+    if(!q)return;
+    const row=document.createElement("div");
+    row.className="msg user";
+    const bubble=document.createElement("div");
+    bubble.className="bubble";
+    bubble.textContent=q;
+    row.appendChild(bubble);
+    messages.appendChild(row);
+    input.value="";
+    const reply=document.createElement("div");
+    reply.className="msg";
+    const rb=document.createElement("div");
+    rb.className="bubble";
+    const s=q.toLowerCase();
+    if(s.includes("kota")&&(s.includes("polytechnic")||s.includes("college"))){
+      rb.textContent="Government Polytechnic College, Kota\nDistrict: Kota\nEstablished: 1959\nPhone: 0744-2365538\nAddress: DCM Road, Kota 324007\n\nSource: Official DTE College Directory — https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469";
+    }else if(s.includes("fee")||s.includes("fees")||q.includes("फीस")){
+      rb.textContent="Fee kis college/course ki? College ka naam, city ya course batao. Main random fee amount nahi bataunga.";
+    }else if(s.includes("admission")||s.includes("admission kaise")||q.includes("एडमिशन")){
+      rb.textContent="2026–27 admission ke liye official DTE First Year Admissions page par Admission Form, Notification, Central Admission Process aur Booklet available hain.\n\nSource: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012";
+    }else{
+      rb.textContent="RJ-UNITECH is working. Ask me about Rajasthan technical colleges, admissions, eligibility, fees, scholarships, cut-offs or documents.";
+    }
+    reply.appendChild(rb);
+    messages.appendChild(reply);
+    messages.scrollTop=messages.scrollHeight;
+  }
+  const handler=(typeof window.send==="function")?window.send:fallbackSend;
+  sendBtn.onclick=handler;
+  input.addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();handler();}});
+})();
+</script>
 </body></html>
