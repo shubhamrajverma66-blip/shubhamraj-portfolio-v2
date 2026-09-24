@@ -2,8 +2,8 @@ const glow=document.querySelector('.cursor-glow');window.addEventListener('point
 
 // Internship cover artwork: replace the four placeholder covers with the final selected images.
 const internshipCovers=[
-  ['assets/internship-cover-01.jpg','Shubham Raj — Scales of Justice'],
-  ['assets/internship-cover-02.jpg','Shubham Raj — Evidence and Gavel'],
+  ['assets/internship-cover-01.jpg','Rinee — Scales of Justice'],
+  ['assets/internship-cover-02.jpg','Rinee — Evidence and Gavel'],
   ['https://i0.pickpik.com/photos/666/246/477/justice-statue-lady-justice-greek-mythology-43c4c84053cbb16e1184d1939ab58d45.jpg','Lady Justice — law, balance and principle'],
   ['assets/internship-cover-04.jpg','Supreme Court architecture — original artwork']
 ];
