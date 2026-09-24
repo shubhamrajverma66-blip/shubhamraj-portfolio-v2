@@ -1,27 +1,38 @@
-# RajTech Assist — Multilingual Technical Education Chatbot
+# RajTech Assist — Rajasthan Technical Education Chatbot
 
-A polished working prototype for the Rajasthan technical-education admission-assistance concept from the minor-project synopsis.
+A share-ready, browser-based chatbot for the Rajasthan technical-education admission-assistance project.
 
-## Prototype features
-- English, Hindi and Marwari conversation modes
-- Natural-language keyword/intent routing
-- Admission, eligibility, fees, scholarships, cut-offs and placements intents
-- Quick-question chips
-- Responsive chat UI
-- Browser voice-input support where available
-- Structured responses with an explicit verification boundary for official figures
+## What it now does
 
-## Current architecture
-This GitHub Pages-friendly prototype is API-key free. It uses a small local knowledge base and intent matcher so it can run immediately in a browser.
+- Understands normal English, Hindi and **Hinglish** such as:
+  - "fees kitni hai?"
+  - "Kota ka polytechnic batao"
+  - "admission kaise hoga?"
+  - "documents kya lagenge?"
+  - "Jaipur ke colleges dikhao"
+- English, Hindi and Marwari response modes.
+- Searches the Rajasthan DTE college-directory records embedded in the prototype.
+- Returns college name, district, establishment year, phone and address where the official directory publishes those fields.
+- Admission, eligibility, documents, fees, scholarships, cut-offs, placements and portal guidance.
+- Quick prompts, responsive mobile UI, clear-chat and browser voice input.
+- Official DTE source desk with first-year, lateral-entry and college-directory links.
+- No API key is exposed in the browser, so the public GitHub Pages link can be shared safely as a demo.
 
-## Production upgrade
-For the full SIH implementation:
-1. verified DTE/college knowledge ingestion
-2. searchable database/vector index
-3. multilingual NLP/LLM retrieval
-4. admin update workflow
-5. analytics and source citations
-6. secure backend API (never expose an LLM API key in browser JavaScript)
+## Data boundary
 
-## Open
-Serve this folder with any static web server or open index.html directly. On GitHub Pages, use the repository Pages URL followed by /chatbot/.
+The official Rajasthan Department of Technical Education states that it manages **43 Government Polytechnic Colleges and 108 Unaided Private Polytechnic Colleges**. The public directory page currently used by this prototype exposes a set of college records and directory fields; the chatbot does **not** invent missing private-college, fee, placement or cut-off data. Current rules and numbers should be verified from the official DTE source before a student relies on them.
+
+For a full SIH production deployment, the next data layer should ingest and refresh all official government + private college records, branch/intake matrices, year-wise allotments/cut-offs, approved fees, hostel details, scholarships and verified placement/alumni data.
+
+## Public deployment
+
+The repository deploys `chatbot/` through GitHub Pages using GitHub Actions. The public URL is:
+
+https://shubhamrajverma66-blip.github.io/shubhamraj-portfolio-v2/chatbot/
+
+## Official sources
+
+- DTE College Directory: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469
+- DTE First Year Admissions 2026–27: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012
+- DTE Lateral Entry 2026–27: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31013
+- DTE Department Portal: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717
