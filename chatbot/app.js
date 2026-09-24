@@ -128,16 +128,18 @@ function isSpecificCollegeSignal(q){
  return hasDistrict||hasName||hasCollegeWord;
 }
 function findColleges(q){
- if(!isSpecificCollegeSignal(q))return [];
+ const directory=isDirectoryQuery(q);
+ if(!isSpecificCollegeSignal(q)&&!directory)return [];
  const s=norm(q),tokens=queryTokens(q);
+ const stop=new Set(["rajasthan","government","govt","college","colleges","polytechnic","diploma","directory","list","saare","sare","sabhi","all","dikhao","show","ke","ka","ki","me","mein","the"]);
  return colleges.map(c=>{
    const name=norm(c.name),hay=norm(c.name+" "+c.district+" "+c.address);
-   let score=0;
+   let score=directory?1:0;
    if(s.includes(name))score+=100;
    if(s.includes(norm(c.district)))score+=20;
-   tokens.forEach(t=>{if(t.length>=4&&hay.includes(t))score+=2});
+   tokens.forEach(t=>{if(t.length>=4&&!stop.has(t)&&hay.includes(t))score+=3});
    return {c,score};
- }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,10).map(x=>x.c);
+ }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,directory?20:10).map(x=>x.c);
 }
 function retrieve(q){
  const s=norm(q);
