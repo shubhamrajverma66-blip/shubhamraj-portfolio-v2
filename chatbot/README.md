@@ -31,3 +31,8 @@ DTE College Directory: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducati
 DTE First Year Admissions 2026-27: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012
 DTE Lateral Entry 2026-27: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31013
 DTE Department Portal: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717
+
+
+## SIH build status
+
+The interface is being evolved toward a module-based SIH demo with college exploration, factual comparison, multilingual conversational UX and source-first verification.
