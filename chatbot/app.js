@@ -91,7 +91,8 @@ const SOURCES={
   directory:{label:"Official DTE College Directory",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469"},
   admissions:{label:"Official DTE First Year Admissions 2026–27",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012"},
   lateral:{label:"Official DTE Lateral Entry Admissions 2026–27",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31013"},
-  department:{label:"Official DTE Department Portal",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717"},\n  engineering:{label:"Government Engineering College Jaipur — Official",url:"https://hte.rajasthan.gov.in/GovernmentEngineeringCollegeJaipur/91347"},
+  department:{label:"Official DTE Department Portal",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717"},
+  engineering:{label:"Government Engineering College Jaipur — Official",url:"https://hte.rajasthan.gov.in/GovernmentEngineeringCollegeJaipur/91347"},
   documents:{label:"Official DTE Documents List",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30745"}
 };
 
