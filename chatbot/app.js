@@ -84,69 +84,158 @@ function norm(s){return s.toLowerCase().normalize("NFKD").replace(/[\\u0300-\\u0
 function now(){return new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}
 function addMessage(text,type="bot"){const row=document.createElement("div");row.className="msg "+type;const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=text;const time=document.createElement("div");time.className="time";time.textContent=now();row.append(bubble,time);messages.append(row);messages.scrollTop=messages.scrollHeight}
 function renderChips(){suggestions.innerHTML="";langText[state.lang].chips.forEach(label=>{const b=document.createElement("button");b.className="chip";b.textContent=label;b.onclick=()=>{input.value=label;send()};suggestions.append(b)});input.placeholder=langText[state.lang].placeholder}
-function queryTokens(q){return norm(q).split(" ").filter(x=>x.length>2)}
-function explicitCollegeQuery(q){
+function queryTokens(q){return norm(q).split(/\s+/).filter(Boolean)}
+
+const SOURCES={
+  directory:{label:"Official DTE College Directory",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469"},
+  admissions:{label:"Official DTE First Year Admissions 2026–27",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31012"},
+  lateral:{label:"Official DTE Lateral Entry Admissions 2026–27",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/31013"},
+  department:{label:"Official DTE Department Portal",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30717"},
+  documents:{label:"Official DTE Documents List",url:"https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/30745"}
+};
+
+const ragChunks=[
+ {id:"admission-2026",keys:["admission","admit","apply","application","counselling","counseling","allotment","प्रवेश","एडमिशन","आवेदन","काउंसलिंग"],source:SOURCES.admissions,text:"For 2026–27, the official DTE First Year Admissions page publishes the Admission Form, Notification, Central Admission Process, Diploma Admission Process, Advertisement and Booklet."},
+ {id:"lateral-2026",keys:["lateral","second year","2nd year","diploma after iti","पार्श्व","द्वितीय वर्ष"],source:SOURCES.lateral,text:"For 2026–27 lateral entry, the official DTE page publishes the Admission Form, Notification, Central Admission Process, Diploma Admission Process, Advertisement and Booklet."},
+ {id:"directory",keys:["college","colleges","polytechnic","diploma","directory","कॉलेज","पॉलिटेक्निक","डिप्लोमा","list"],source:SOURCES.directory,text:"The official DTE College Directory lists college name, college URL, district, establishment year, contact/address, college type and course type."},
+ {id:"department",keys:["government polytechnic","gpc","technical education","dte","department","राजस्थान तकनीकी शिक्षा"],source:SOURCES.department,text:"The official DTE department portal states that the department manages 43 Government Polytechnic Colleges (35 Co-ed and 8 Women) and 108 Unaided Private Polytechnic Colleges; the portal notes it is under migration and data may vary."},
+ {id:"fees",keys:["fee","fees","फीस","शुल्क","cost","tuition"],source:SOURCES.documents,text:"The official DTE Documents List includes 2026 fee-related material, including a State Level Fee Assessment Committee order and new fee-structure proposals dated 06/07/2026. A universal fee should not be guessed; fee is course/institute/category/session specific."},
+ {id:"documents",keys:["document","documents","docs","marksheet","certificate","aadhaar","दस्तावेज","कागज","कागद"],source:SOURCES.admissions,text:"Required documents depend on admission route and category. The current 2026–27 DTE notice/booklet is the source to verify the exact reporting/document list."},
+ {id:"cutoff",keys:["cutoff","cut-off","cut off","rank","merit","कटऑफ","रैंक","मेरिट"],source:SOURCES.admissions,text:"Cut-off or allotment figures must be tied to the year, course/branch, category, round and admission route. Do not infer a current cut-off from an old year."},
+ {id:"scholarship",keys:["scholarship","scholarships","financial aid","छात्रवृत्ति","स्कॉलरशिप"],source:SOURCES.department,text:"Scholarship availability, eligibility and deadlines are scheme- and session-specific; verify the current authorised Rajasthan government scheme source."},
+ {id:"placement",keys:["placement","placements","job","salary","recruiter","alumni","प्लेसमेंट","नौकरी","सैलरी"],source:SOURCES.directory,text:"Placement figures are college- and year-specific. If a verified placement record is not in the knowledge base, the assistant must say it is unavailable rather than inventing a number."},
+ {id:"btech",keys:["btech","b tech","b.tech","बीटेक","बी टेक"],source:SOURCES.department,text:"B.Tech is a degree programme. The current embedded college directory is primarily a Polytechnic/Diploma directory, so the assistant must not label a diploma-only record as a B.Tech college. Government Engineering College Jaipur is separately present in the embedded directory and has B.Tech-specific official notices."}
+];
+
+function now(){return new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}
+function addMessage(text,type="bot"){const row=document.createElement("div");row.className="msg "+type;const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=text;const time=document.createElement("div");time.className="time";time.textContent=now();row.append(bubble,time);messages.append(row);messages.scrollTop=messages.scrollHeight}
+function renderChips(){suggestions.innerHTML="";langText[state.lang].chips.forEach(label=>{const b=document.createElement("button");b.className="chip";b.textContent=label;b.onclick=()=>{input.value=label;send()};suggestions.append(b)});input.placeholder=langText[state.lang].placeholder}
+
+function hasAny(s,arr){return arr.some(x=>s.includes(norm(x)))}
+function isBTechQuery(q){const s=norm(q);return /(^|\s)(b\s*\.?\s*tech|btech|b\.tech)(\s|$)/.test(s)||s.includes("बीटेक")||s.includes("बी टेक")||s.includes("engineering degree")}
+function isFeeQuery(q){const s=norm(q);return /(^|\s)(fee|fees|फीस|शुल्क)(\s|$)/.test(s)||/(fee|fees|फीस|शुल्क)\s*(kya|kya hai|kitni|kitna|bata|batao|hai|how much)/.test(s)||/kitni\s*(fee|fees)/.test(s)||/kitna\s*(fee|fees)/.test(s)||/\bfee\b/.test(s)}
+function isDirectoryQuery(q){const s=norm(q);return hasAny(s,["directory","list","all colleges","saare colleges","sare colleges","sabhi colleges","all polytechnic","saare polytechnic","sare polytechnic","dikhao","dikhaiye","show colleges","कॉलेज list","सारे कॉलेज","सभी कॉलेज"])}
+function isSpecificCollegeSignal(q){
  const s=norm(q);
- const words=queryTokens(q);
- const locationWords=colleges.map(c=>norm(c.district)).filter(Boolean);
- const hasLocation=locationWords.some(d=>s.includes(d));
- const hasCollegeWord=/(college|polytechnic|diploma|gpc|gwpc|कॉलेज|पॉलिटेक्निक|डिप्लोमा)/.test(s);
- const hasKnownName=colleges.some(c=>{const parts=norm(c.name).split(" ").filter(x=>x.length>4);return parts.some(p=>words.includes(p))});
- return hasLocation||hasCollegeWord||hasKnownName;
+ const hasCollegeWord=/(^|\s)(college|polytechnic|diploma|gpc|gwpc|कॉलेज|पॉलिटेक्निक|डिप्लोमा)(\s|$)/.test(s);
+ const hasDistrict=colleges.some(c=>s.includes(norm(c.district)));
+ const hasName=colleges.some(c=>{
+   const name=norm(c.name);
+   return s.includes(name)||name.split(" ").filter(w=>w.length>=5).some(w=>s.includes(w));
+ });
+ return hasCollegeWord||hasDistrict||hasName;
 }
 function findColleges(q){
- if(!explicitCollegeQuery(q)) return [];
- const s=norm(q), tokens=queryTokens(q);
+ if(!isSpecificCollegeSignal(q))return [];
+ const s=norm(q),tokens=queryTokens(q);
  return colleges.map(c=>{
-  const hay=norm(c.name+" "+c.district+" "+c.address);
-  let score=0;
-  tokens.forEach(t=>{if(hay.includes(t))score+=t.length>5?2:1});
-  if(s.includes(norm(c.district)))score+=4;
-  if(s.includes(norm(c.name)))score+=8;
-  return {c,score};
+   const name=norm(c.name),hay=norm(c.name+" "+c.district+" "+c.address);
+   let score=0;
+   if(s.includes(name))score+=100;
+   if(s.includes(norm(c.district)))score+=20;
+   tokens.forEach(t=>{if(t.length>=4&&hay.includes(t))score+=2});
+   return {c,score};
  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,10).map(x=>x.c);
 }
-function isBTechQuery(q){return /\bb\.?\s*tech\b|btech|b tech|engineering degree|बीटेक|बी टेक/.test(norm(q))}
+function retrieve(q){
+ const s=norm(q);
+ return ragChunks.map(c=>({c,score:c.keys.reduce((n,k)=>s.includes(norm(k))?n+1:n,0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
+}
+function sourceLine(source){return "\n\nSource: "+source.label+" — "+source.url}
+function answerInLang(en,hi,mrw){
+ if(state.lang==="hi")return hi||en;
+ if(state.lang==="mrw")return mrw||en;
+ return en;
+}
+
 function collegeReply(q){
  const s=norm(q);
  if(isBTechQuery(q)){
-  return "A B.Tech is a degree-engineering programme, while the DTE college directory shown here is primarily the Polytechnic/Diploma directory. I won’t label a diploma college as a B.Tech college. If you want B.Tech colleges in Rajasthan, ask for “BTech colleges” and I’ll keep that category separate.";
+   if(isDirectoryQuery(q)||/\b(btech|b tech|b\.tech)\b/.test(s)){
+     return answerInLang(
+       "B.Tech ko Polytechnic/Diploma se alag rakha gaya hai. Is chatbot ka main college directory DTE Polytechnic/Diploma records par based hai. Government Engineering College Jaipur ka separate official record hai. Kisi specific B.Tech college ka naam batao, main available verified details dunga.",
+       "B.Tech को Polytechnic/Diploma से अलग रखा गया है। इस chatbot की मुख्य college directory DTE Polytechnic/Diploma records पर आधारित है। Government Engineering College Jaipur का अलग official record है। किसी specific B.Tech college का नाम बताइए।",
+       "B.Tech ने Polytechnic/Diploma सूं अलग राख्यो है। Main directory DTE Polytechnic/Diploma records पर based है। Government Engineering College Jaipur रो अलग official record है। Specific college रो नाम बताओ।"
+     )+sourceLine(SOURCES.department);
+   }
  }
  const found=findColleges(q);
  if(!found.length)return null;
- const directory=/list|directory|saare|sare|all|dikhao|dikh|show|colleges|college list|sabhi|सारे|सभी|कॉलेज/.test(s);
- if(directory&&found.length>1){
+ if(isDirectoryQuery(q)){
    state.selectedCollege=null;
-   return "Matching DTE directory records:\n"+found.map(c=>c.name+" — "+c.district).join("\n")+"\n\nFor the complete live directory, use the official DTE College Directory in Source Desk.";
+   return answerInLang(
+     "Matching official DTE directory records:\n"+found.map(c=>c.name+" — "+c.district).join("\n")+"\n\nThis is a matched subset, not a claim that every Rajasthan college is shown. Open the official DTE College Directory for the complete live list.",
+     "Official DTE directory में matched records:\n"+found.map(c=>c.name+" — "+c.district).join("\n")+"\n\nयह matched subset है; इसे पूरे Rajasthan की complete list न मानें। पूरी live list के लिए official DTE College Directory खोलें।",
+     "Official DTE directory में matched records:\n"+found.map(c=>c.name+" — "+c.district).join("\n")+"\n\nआ पूरी Rajasthan री complete list नहीं है। पूरी live list खातर official DTE directory खोलो।"
+   )+sourceLine(SOURCES.directory);
  }
  state.selectedCollege=found[0];
  const c=found[0];
- return c.name+"\nDistrict: "+c.district+"\nEstablished: "+(c.year||"Not shown")+"\nPhone: "+(c.phone||"Not listed")+"\nAddress: "+(c.address||"Not listed")+"\n\nSource: Rajasthan DTE college directory (official).";
+ return c.name+"\nDistrict: "+c.district+"\nEstablished: "+(c.year||"Not shown")+"\nPhone: "+(c.phone||"Not listed")+"\nAddress: "+(c.address||"Not listed")+"\n\n"+SOURCES.directory.label+sourceLine(SOURCES.directory);
 }
+
 function detectIntent(q){
  const s=norm(q);
- let best="fallback",score=0;
- for(const [intent,words] of Object.entries(intents)){
-  let n=0;
-  for(const w of words){const nw=norm(w);if(s.includes(nw))n+=nw.length>4?2:1}
-  if(n>score){score=n;best=intent}
+ // Hard priority: explicit fee language must never fall through to documents/fallback.
+ if(isFeeQuery(q))return "fees";
+ const priority=["cutoff","scholarship","placement","documents","portal","admission","eligibility","polytechnic"];
+ let best="fallback",bestScore=0;
+ for(const intent of priority){
+   let score=0;
+   for(const w of intents[intent]){const nw=norm(w);if(nw&&s.includes(nw))score+=nw.length>=5?3:1}
+   if(score>bestScore){bestScore=score;best=intent}
  }
  return best;
 }
-function answer(q){
- const s=norm(q);
- if(state.selectedCollege && /^(fee|fees|cost|tuition|फीस|शुल्क)|fees? (kitni|kya|bata)|fee (kitni|kya|bata)|uski fee|iski fee|uski fees|iski fees|uska fee|iska fee/.test(s)){
-   const c=state.selectedCollege;
-   return c.name+" ki current fee ka verified amount mere embedded college record me available nahi hai. Main guess nahi karunga. Current 2026–27 fee ke liye official DTE notice/college page se verify karein.\n\nCollege context: "+c.name+" — "+c.district+".";
+
+function intentReply(intent,q){
+ const r=responses[state.lang][intent]||responses[state.lang].fallback;
+ const hit=retrieve(q)[0];
+ if(hit && ["admission","eligibility","documents","fees","cutoff","scholarship","placement","portal","polytechnic"].includes(intent)){
+   if(intent==="fees"){
+     return answerInLang(
+       "Which college/course are you asking about? I won’t guess a fee amount. The official DTE documents list contains 2026 fee-related orders/proposals, and the exact payable amount should be verified for the institute/course/category/session.",
+       "किस college/course की फीस पूछ रहे हैं? मैं fee amount guess नहीं करूँगा। Official DTE documents list में 2026 के fee-related orders/proposals हैं; exact payable amount institute/course/category/session के हिसाब से verify करनी होगी।",
+       "कुणसे college/course री फीस पूछो हो? मैं fee amount अंदाजे सूं नहीं बताऊँगा। Exact amount institute/course/category/session हिसाब सूं official source सूं verify करो।"
+     )+sourceLine(hit.c.source);
+   }
+   return r+sourceLine(hit.c.source);
  }
- return collegeReply(q)||responses[state.lang][detectIntent(q)]||responses[state.lang].fallback;
+ return r;
 }
+
+function answer(q){
+ const clean=q.trim();
+ if(!clean)return "";
+ // Contextual follow-up: “fees”, “fee bata”, “iski fees?” etc. must use the last selected college.
+ if(state.selectedCollege && isFeeQuery(clean)){
+   const c=state.selectedCollege;
+   return answerInLang(
+     c.name+" ki current fee ka verified amount mere embedded record me available nahi hai. Main guess nahi karunga. 2026–27 fee ke liye official DTE fee-related documents/college page se verify karein.\n\nCollege context: "+c.name+" — "+c.district+".",
+     c.name+" की current fee का verified amount मेरे embedded record में उपलब्ध नहीं है। मैं guess नहीं करूँगा। 2026–27 fee के लिए official DTE fee-related documents/college page से verify करें।\n\nCollege context: "+c.name+" — "+c.district+"।",
+     c.name+" री current fee रो verified amount म्हारे embedded record में उपलब्ध नहीं है। मैं अंदाजो नहीं लगाऊँगा। 2026–27 री fee official DTE fee documents/college page सूं verify करो।\n\nCollege context: "+c.name+" — "+c.district+"।"
+   )+sourceLine(SOURCES.documents);
+ }
+ // A bare fee query with no college context asks for clarification instead of returning an unrelated answer.
+ if(isFeeQuery(clean)){
+   return answerInLang(
+     "Fee kis college/course ki? College ka naam, city ya course (jaise Diploma Civil, B.Tech) batao. Main random college ki fee nahi bataunga.",
+     "फीस किस college/course की? College का नाम, city या course (जैसे Diploma Civil, B.Tech) बताइए। मैं किसी random college की fee नहीं बताऊँगा।",
+     "फीस कुणसे college/course री? College रो नाम, city या course (जैसे Diploma Civil, B.Tech) बताओ। मैं random college री fee नहीं बताऊँगा।"
+   );
+ }
+ const cr=collegeReply(clean);
+ if(cr)return cr;
+ const intent=detectIntent(clean);
+ return intentReply(intent,clean);
+}
+
 function send(){
  const q=input.value.trim();if(!q)return;
  addMessage(q,"user");input.value="";
  const typing=document.createElement("div");typing.className="msg";typing.innerHTML='<div class="bubble">Typing…</div>';
  messages.append(typing);messages.scrollTop=messages.scrollHeight;
- setTimeout(()=>{typing.remove();addMessage(answer(q))},280);
+ setTimeout(()=>{typing.remove();addMessage(answer(q))},120);
 }
 const messages=document.getElementById("messages"),input=document.getElementById("userInput"),suggestions=document.getElementById("suggestions");
 document.getElementById("sendBtn").onclick=send;
