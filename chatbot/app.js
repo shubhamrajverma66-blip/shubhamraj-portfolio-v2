@@ -84,15 +84,83 @@ function norm(s){return s.toLowerCase().normalize("NFKD").replace(/[\\u0300-\\u0
 function now(){return new Date().toLocaleTimeString([], {hour:"2-digit",minute:"2-digit"})}
 function addMessage(text,type="bot"){const row=document.createElement("div");row.className="msg "+type;const bubble=document.createElement("div");bubble.className="bubble";bubble.textContent=text;const time=document.createElement("div");time.className="time";time.textContent=now();row.append(bubble,time);messages.append(row);messages.scrollTop=messages.scrollHeight}
 function renderChips(){suggestions.innerHTML="";langText[state.lang].chips.forEach(label=>{const b=document.createElement("button");b.className="chip";b.textContent=label;b.onclick=()=>{input.value=label;send()};suggestions.append(b)});input.placeholder=langText[state.lang].placeholder}
-function findColleges(q){const s=norm(q);return colleges.map(c=>{const hay=norm(c.name+" "+c.district+" "+c.address);let score=0;s.split(" ").forEach(token=>{if(token.length>2&&hay.includes(token))score+=token.length>5?2:1});return {c,score}}).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,8).map(x=>x.c)}
-function collegeReply(q){const found=findColleges(q);if(!found.length)return null;const s=norm(q);const directory=/list|directory|saare|sare|all|dikhao|dikh|show|colleges|college list|sabhi|सारे|सभी|कॉलेज/.test(s);if(directory&&found.length>1)return "Matching DTE directory records:\\n"+found.map(c=>c.name+" — "+c.district).join("\\n")+"\\n\\nOfficial directory: https://hte.rajasthan.gov.in/DepartmentofTechnicalEducation/91469";const c=found[0];return c.name+"\\nDistrict: "+c.district+"\\nEstablished: "+(c.year||"Not shown")+"\\nPhone: "+(c.phone||"Not listed")+"\\nAddress: "+(c.address||"Not listed")+"\\n\\nSource: Rajasthan DTE college directory (official)."}
-function detectIntent(q){const s=norm(q);let best="fallback",score=0;for(const [intent,words] of Object.entries(intents)){let n=0;for(const w of words)if(s.includes(norm(w)))n+=norm(w).length>4?2:1;if(n>score){score=n;best=intent}}return best}
-function answer(q){return collegeReply(q)||responses[state.lang][detectIntent(q)]||responses[state.lang].fallback}
-function send(){const q=input.value.trim();if(!q)return;addMessage(q,"user");input.value="";const typing=document.createElement("div");typing.className="msg";typing.innerHTML='<div class="bubble">Typing…</div>';messages.append(typing);messages.scrollTop=messages.scrollHeight;setTimeout(()=>{typing.remove();addMessage(answer(q))},280)}
+function queryTokens(q){return norm(q).split(" ").filter(x=>x.length>2)}
+function explicitCollegeQuery(q){
+ const s=norm(q);
+ const words=queryTokens(q);
+ const locationWords=colleges.map(c=>norm(c.district)).filter(Boolean);
+ const hasLocation=locationWords.some(d=>s.includes(d));
+ const hasCollegeWord=/(college|polytechnic|diploma|gpc|gwpc|कॉलेज|पॉलिटेक्निक|डिप्लोमा)/.test(s);
+ const hasKnownName=colleges.some(c=>{const parts=norm(c.name).split(" ").filter(x=>x.length>4);return parts.some(p=>words.includes(p))});
+ return hasLocation||hasCollegeWord||hasKnownName;
+}
+function findColleges(q){
+ if(!explicitCollegeQuery(q)) return [];
+ const s=norm(q), tokens=queryTokens(q);
+ return colleges.map(c=>{
+  const hay=norm(c.name+" "+c.district+" "+c.address);
+  let score=0;
+  tokens.forEach(t=>{if(hay.includes(t))score+=t.length>5?2:1});
+  if(s.includes(norm(c.district)))score+=4;
+  if(s.includes(norm(c.name)))score+=8;
+  return {c,score};
+ }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,10).map(x=>x.c);
+}
+function isBTechQuery(q){return /\bb\.?\s*tech\b|btech|b tech|engineering degree|बीटेक|बी टेक/.test(norm(q))}
+function collegeReply(q){
+ const s=norm(q);
+ if(isBTechQuery(q)){
+  return "A B.Tech is a degree-engineering programme, while the DTE college directory shown here is primarily the Polytechnic/Diploma directory. I won’t label a diploma college as a B.Tech college. If you want B.Tech colleges in Rajasthan, ask for “BTech colleges” and I’ll keep that category separate.";
+ }
+ const found=findColleges(q);
+ if(!found.length)return null;
+ const directory=/list|directory|saare|sare|all|dikhao|dikh|show|colleges|college list|sabhi|सारे|सभी|कॉलेज/.test(s);
+ if(directory&&found.length>1){
+   state.selectedCollege=null;
+   return "Matching DTE directory records:\n"+found.map(c=>c.name+" — "+c.district).join("\n")+"\n\nFor the complete live directory, use the official DTE College Directory in Source Desk.";
+ }
+ state.selectedCollege=found[0];
+ const c=found[0];
+ return c.name+"\nDistrict: "+c.district+"\nEstablished: "+(c.year||"Not shown")+"\nPhone: "+(c.phone||"Not listed")+"\nAddress: "+(c.address||"Not listed")+"\n\nSource: Rajasthan DTE college directory (official).";
+}
+function detectIntent(q){
+ const s=norm(q);
+ let best="fallback",score=0;
+ for(const [intent,words] of Object.entries(intents)){
+  let n=0;
+  for(const w of words){const nw=norm(w);if(s.includes(nw))n+=nw.length>4?2:1}
+  if(n>score){score=n;best=intent}
+ }
+ return best;
+}
+function answer(q){
+ const s=norm(q);
+ if(state.selectedCollege && /^(fee|fees|cost|tuition|फीस|शुल्क)|fees? (kitni|kya|bata)|fee (kitni|kya|bata)|uski fee|iski fee|uski fees|iski fees|uska fee|iska fee/.test(s)){
+   const c=state.selectedCollege;
+   return c.name+" ki current fee ka verified amount mere embedded college record me available nahi hai. Main guess nahi karunga. Current 2026–27 fee ke liye official DTE notice/college page se verify karein.\n\nCollege context: "+c.name+" — "+c.district+".";
+ }
+ return collegeReply(q)||responses[state.lang][detectIntent(q)]||responses[state.lang].fallback;
+}
+function send(){
+ const q=input.value.trim();if(!q)return;
+ addMessage(q,"user");input.value="";
+ const typing=document.createElement("div");typing.className="msg";typing.innerHTML='<div class="bubble">Typing…</div>';
+ messages.append(typing);messages.scrollTop=messages.scrollHeight;
+ setTimeout(()=>{typing.remove();addMessage(answer(q))},280);
+}
 const messages=document.getElementById("messages"),input=document.getElementById("userInput"),suggestions=document.getElementById("suggestions");
-document.getElementById("sendBtn").onclick=send;input.addEventListener("keydown",e=>{if(e.key==="Enter")send()});
-document.querySelectorAll(".lang").forEach(btn=>btn.onclick=()=>{document.querySelectorAll(".lang").forEach(x=>x.classList.remove("active"));btn.classList.add("active");state.lang=btn.dataset.lang;renderChips();messages.innerHTML="";addMessage(responses[state.lang].welcome)});
+document.getElementById("sendBtn").onclick=send;
+input.addEventListener("keydown",e=>{if(e.key==="Enter")send()});
+document.querySelectorAll(".lang").forEach(btn=>btn.onclick=()=>{
+ document.querySelectorAll(".lang").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+ state.lang=btn.dataset.lang;state.selectedCollege=null;renderChips();messages.innerHTML="";addMessage(responses[state.lang].welcome)
+});
 document.querySelectorAll(".quick").forEach(b=>b.onclick=()=>{input.value=b.dataset.q;send()});
-document.getElementById("clearBtn").onclick=()=>{messages.innerHTML="";addMessage(responses[state.lang].welcome)};
-document.getElementById("voiceBtn").onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){addMessage("Voice input is not supported by this browser. Try Chrome on desktop or Android.");return}const r=new SR();r.lang=state.lang==="en"?"en-IN":"hi-IN";r.interimResults=false;r.onresult=e=>{input.value=e.results[0][0].transcript;send()};r.start()};
+document.getElementById("clearBtn").onclick=()=>{state.selectedCollege=null;messages.innerHTML="";addMessage(responses[state.lang].welcome)};
+document.getElementById("voiceBtn").onclick=()=>{
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){addMessage("Voice input is not supported by this browser. Try Chrome on desktop or Android.");return}
+ const r=new SR();r.lang=state.lang==="en"?"en-IN":"hi-IN";r.interimResults=false;
+ r.onresult=e=>{input.value=e.results[0][0].transcript;send()};r.start()
+};
 renderChips();addMessage(responses.en.welcome);
